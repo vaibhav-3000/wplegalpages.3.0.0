@@ -14,38 +14,39 @@
  */
 
 // If this file is called directly, abort.
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
     die;
 }
 
-if ( ! defined( 'WPL_LITE_PLUGIN_URL' ) ) {
-    define( 'WPL_LITE_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+if (! defined('WPL_LITE_PLUGIN_URL')) {
+    define('WPL_LITE_PLUGIN_URL', plugin_dir_url(__FILE__));
 }
-if ( ! defined( 'WPL_LITE_PLUGIN_BASENAME' ) ) {
-    define( 'WPL_LITE_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
+if (! defined('WPL_LITE_PLUGIN_BASENAME')) {
+    define('WPL_LITE_PLUGIN_BASENAME', plugin_basename(__FILE__));
 }
-if ( ! defined( 'WPLEGAL_API_URL' ) ) {
-    define( 'WPLEGAL_API_URL', 'https://api.wpeka.com/wp-json/wplegal/v2/' );
+if (! defined('WPLEGAL_API_URL')) {
+    define('WPLEGAL_API_URL', 'https://api.wpeka.com/wp-json/wplegal/v2/');
 }
 /**
  * Check if the constant GDPR_APP_URL is not already defined.
 */
-if ( ! defined( 'WPLEGAL_APP_URL' ) ) {
-    define( 'WPLEGAL_APP_URL', 'https://app.wplegalpages.com' );
+if (! defined('WPLEGAL_APP_URL')) {
+    define('WPLEGAL_APP_URL', 'https://app.wplegalpages.com');
 }
 
-if ( ! function_exists( 'wplp_fs' ) ) {
+if (! function_exists('wplp_fs')) {
     /**
      * Helper function to access SDK.
      *
      * @return Analytics
      */
-    function wplp_fs() {
+    function wplp_fs() 
+    {
         global $wplp_fs;
 
-        if ( ! isset( $wplp_fs ) ) {
+        if (! isset($wplp_fs)) {
             // Include Analytics SDK.
-            require_once dirname( __FILE__ ) . '/analytics/start.php';
+            include_once dirname(__FILE__) . '/analytics/start.php';
 
             $wplp_fs = ras_dynamic_init(
                 array(
@@ -55,8 +56,7 @@ if ( ! function_exists( 'wplp_fs' ) ) {
                     'module_type'     => 'plugin',
                     'version'         => '2.9.5',
                     'plugin_basename' => 'wplegalpages/wplegalpages.php',
-                    'plugin_url'      => WPL_LITE_PLUGIN_URL,
-                )
+                    'plugin_url'      => WPL_LITE_PLUGIN_URL,)
             );
         }
 
@@ -66,22 +66,23 @@ if ( ! function_exists( 'wplp_fs' ) ) {
     // Init Analytics.
     // wplp_fs();
     // SDK initiated.
-    // do_action( 'wplp_fs_loaded' );
+    // do_action('wplp_fs_loaded');
 }
 
-if ( ! defined( 'WPLPP_SUFFIX' ) ) {
-    define( 'WPLPP_SUFFIX', ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min' );
+if (! defined('WPLPP_SUFFIX')) {
+    define('WPLPP_SUFFIX', (defined('SCRIPT_DEBUG') && SCRIPT_DEBUG) ? '' : '.min');
 }
 
-if ( ! function_exists( 'activate_wp_legal_pages' ) ) {
+if (! function_exists('activate_wp_legal_pages')) {
     /**
      * The code that runs during WPLegalPages activation.
      * This action is documented in includes/class-wp-legal-pages-activator.php
      */
-    function activate_wp_legal_pages() {
-        require_once plugin_dir_path( __FILE__ ) . 'includes/class-wp-legal-pages-activator.php';
+    function activate_wp_legal_pages() 
+    {
+        include_once plugin_dir_path(__FILE__) . 'includes/class-wp-legal-pages-activator.php';
         WP_Legal_Pages_Activator::activate();
-        add_option( 'analytics_activation_redirect_wplegalpages', true );
+        add_option('analytics_activation_redirect_wplegalpages', true);
     }
 }
 
@@ -89,29 +90,31 @@ if ( ! function_exists( 'activate_wp_legal_pages' ) ) {
  * The code that runs during WPLegalPages deactivation.
  * This action is documented in includes/class-plugin-name-deactivator.php
  */
-if ( ! function_exists( 'deactivate_wp_legal_pages' ) ) {
+if (! function_exists('deactivate_wp_legal_pages')) {
     /**
      * The code that runs during WPLegalPages deactivation.
      * This action is documented in includes/class-plugin-name-deactivator.php
      */
-    function deactivate_wp_legal_pages() {
-        require_once plugin_dir_path( __FILE__ ) . 'includes/class-wp-legal-pages-deactivator.php';
+    function deactivate_wp_legal_pages() 
+    {
+        include_once plugin_dir_path(__FILE__) . 'includes/class-wp-legal-pages-deactivator.php';
         WP_Legal_Pages_Deactivator::deactivate();
     }
 }
-if ( ! function_exists( 'delete_wp_legal_pages' ) ) {
+if (! function_exists('delete_wp_legal_pages')) {
     /**
      * The code that runs during WPLegalPages delete.
      * This action is documented in includes/class-plugin-name-delete.php
      */
-    function delete_wp_legal_pages() {
-        require_once plugin_dir_path( __FILE__ ) . 'includes/class-wp-legal-pages-delete.php';
+    function delete_wp_legal_pages() 
+    {
+        include_once plugin_dir_path(__FILE__) . 'includes/class-wp-legal-pages-delete.php';
         WP_Legal_Pages_Delete::delete();
     }
 }
-register_activation_hook( __FILE__, 'activate_wp_legal_pages' );
-register_deactivation_hook( __FILE__, 'deactivate_wp_legal_pages' );
-register_uninstall_hook( __FILE__, 'delete_wp_legal_pages' );
+register_activation_hook(__FILE__, 'activate_wp_legal_pages');
+register_deactivation_hook(__FILE__, 'deactivate_wp_legal_pages');
+register_uninstall_hook(__FILE__, 'delete_wp_legal_pages');
 
 
 
@@ -120,7 +123,7 @@ register_uninstall_hook( __FILE__, 'delete_wp_legal_pages' );
  * The core WPLegalPages class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/class-wp-legal-pages.php';
+require plugin_dir_path(__FILE__) . 'includes/class-wp-legal-pages.php';
 
 /**
  * Begins execution of the WPLegalPages.

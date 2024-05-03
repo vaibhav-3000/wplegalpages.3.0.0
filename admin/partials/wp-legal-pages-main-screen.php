@@ -4,17 +4,17 @@
  * Provide a admin area view for the WP Legal Pages plugin
  *
  * This file is used to markup the admin-facing aspects of the WP Legal Pages plugin.
- *
- * @link       https://wplegalpages.com/
- * @since      3.0.0
- *
+ * 
  * @package Wplegalpages
+ * @link    https://wplegalpages.com/
+ * @since   3.0.0
+ *
  */
 
-$pro_is_activated      = get_option( '_lp_pro_active' );
-$popup                 = get_option( 'lp_popup_enabled' );
-$lp_pro_key_activated  = get_option( 'wc_am_client_wplegalpages_pro_activated' );
-$if_terms_are_accepted = get_option( 'lp_accept_terms' );
+$pro_is_activated      = get_option('_lp_pro_active');
+$popup                 = get_option('lp_popup_enabled');
+$lp_pro_key_activated  = get_option('wc_am_client_wplegalpages_pro_activated');
+$if_terms_are_accepted = get_option('lp_accept_terms');
 
 ?>
 
@@ -25,11 +25,11 @@ $if_terms_are_accepted = get_option( 'lp_accept_terms' );
                 <div class="wp-legalpages-admin-logo-and-label">
                     <div class="wp-legalpages-admin-logo">
                         <!-- //image  -->
-                        <img src="<?php echo esc_url( WPL_LITE_PLUGIN_URL ) . 'admin/images/Wp_Legal_pages_logo_icon.png'; ?>" alt="WP Cookie Consent Logo">
+                        <img src="<?php echo esc_url(WPL_LITE_PLUGIN_URL) . 'admin/images/Wp_Legal_pages_logo_icon.png'; ?>" alt="WP Cookie Consent Logo">
                     </div>
                     <div class="wp-legalpages-admin-label">
                         <!-- //label  -->
-                        <div class="wp-legalpages-admin-label_wp_label"><img src="<?php echo esc_url( WPL_LITE_PLUGIN_URL ) . 'admin/images/Wp_Legal_pages_text_logo.png'; ?>" alt="WP Cookie Consent Label"></div>
+                        <div class="wp-legalpages-admin-label_wp_label"><img src="<?php echo esc_url(WPL_LITE_PLUGIN_URL) . 'admin/images/Wp_Legal_pages_text_logo.png'; ?>" alt="WP Cookie Consent Label"></div>
                     </div>
                 </div>
                 <div class="wp-legalpages-admin-help-and-support">
@@ -37,7 +37,7 @@ $if_terms_are_accepted = get_option( 'lp_accept_terms' );
                         <div class="wp-legalpages-admin-help-icon">
                             <!-- //image  -->
                             <a href="https://club.wpeka.com/docs/wp-legal-pages/" target="_blank">
-                                <img src="<?php echo esc_url( WPL_LITE_PLUGIN_URL ) . 'admin/images/wp_cookie_help.png'; ?>" alt="WP Cookie Consent Help">
+                                <img src="<?php echo esc_url(WPL_LITE_PLUGIN_URL) . 'admin/images/wp_cookie_help.png'; ?>" alt="WP Cookie Consent Help">
                             </a>
                         </div>
                         <div class="wp-legalpages-admin-help-text"><a href="https://club.wpeka.com/docs/wp-legal-pages/" target="_blank">
@@ -49,7 +49,7 @@ $if_terms_are_accepted = get_option( 'lp_accept_terms' );
                         <div class="wp-legalpages-admin-support-icon">
                             <!-- //image  -->
                             <a href="https://club.wpeka.com/contact/" target="_blank">
-                            <img src="<?php echo esc_url( WPL_LITE_PLUGIN_URL ) . 'admin/images/wp_cookie_support.png'; ?>" alt="WP Cookie Consent Support">
+                            <img src="<?php echo esc_url(WPL_LITE_PLUGIN_URL) . 'admin/images/wp_cookie_support.png'; ?>" alt="WP Cookie Consent Support">
                             </a>
                         </div>
                         <div class="wp-legalpages-admin-support-text"><a href="https://club.wpeka.com/contact/" target="_blank">
@@ -68,7 +68,7 @@ $if_terms_are_accepted = get_option( 'lp_accept_terms' );
 
                 <?php
                 // if terms are accepted only then show rest of the tabs
-                if ( $if_terms_are_accepted ) {
+                if ($if_terms_are_accepted ) {
 
                     ?>
 
@@ -92,7 +92,7 @@ $if_terms_are_accepted = get_option( 'lp_accept_terms' );
                 <!-- tab for create popup  -->
                 <?php
                 // first check if popup is activated
-                if ( $popup ) {
+                if ($popup ) {
                     ?>
                         <div class="wp-legalpages-admin-tab wp-legalpages-admin-create-popups-tab" data-tab="create_popup">
                         <p class="wp-legalpages-admin-tab-name">Create&nbsp;Popups</p>
@@ -113,7 +113,7 @@ $if_terms_are_accepted = get_option( 'lp_accept_terms' );
                 <!-- Getting Started content  -->
                 <div class="wp-legalpages-admin-getting-started-content wp-legalpages-admin-tab-content" id="getting_started">
 
-                <?php require_once plugin_dir_path( __FILE__ ) . 'wp-legal-pages-getting-started-template.php'; ?>
+                <?php require_once plugin_dir_path(__FILE__) . 'wp-legal-pages-getting-started-template.php'; ?>
 
                 </div>
                 <!-- create cookie content  -->
@@ -123,20 +123,20 @@ $if_terms_are_accepted = get_option( 'lp_accept_terms' );
                 <!-- settings content -->
                 <div class="wp-legalpages-admin-cookie-settings-content wp-legalpages-admin-tab-content" id="settings">
 
-                <?php require_once plugin_dir_path( __FILE__ ) . 'wp-legal-pages-settings-template.php'; ?>
+                <?php require_once plugin_dir_path(__FILE__) . 'wp-legal-pages-settings-template.php'; ?>
 
                 </div>
                 <!-- all legalpages data content  -->
                 <div class="wp-legalpages-admin-all-legalpages-data-content wp-legalpages-admin-tab-content" id="all_legal_pages">
 
-                <?php require_once plugin_dir_path( __FILE__ ) . 'wp-legal-pages-all-legalpages-template.php'; ?>
+                <?php require_once plugin_dir_path(__FILE__) . 'wp-legal-pages-all-legalpages-template.php'; ?>
 
                 </div>
                 <!-- create popup  -->
                 <div class="wp-legalpages-admin-legal-pages-content wp-legalpages-admin-tab-content" id="create_popup">
 
                 <?php
-                    require_once plugin_dir_path( __FILE__ ) . 'wp-legal-pages-create-popups-template.php';
+                    require_once plugin_dir_path(__FILE__) . 'wp-legal-pages-create-popups-template.php';
                 ?>
 
 

@@ -2,11 +2,10 @@
 /**
  * Register all actions and filters for the WPLegalPages
  *
- * @link       http://wplegalpages.com/
- * @since      1.5.2
- *
  * @package    WP_Legal_Pages
  * @subpackage WP_Legal_Pages/includes
+ * @link       http://wplegalpages.com/
+ * @since      1.5.2
  */
 
 /**
@@ -20,7 +19,7 @@
  * @subpackage WP_Legal_Pages/includes
  * @author     WPEka <support@wplegalpages.com>
  */
-if ( ! class_exists( 'WP_Legal_Pages_Loader' ) ) {
+if (! class_exists('WP_Legal_Pages_Loader')) {
     /**
      * Register all actions and filters for the WPLegalPages.
      *
@@ -37,9 +36,9 @@ if ( ! class_exists( 'WP_Legal_Pages_Loader' ) ) {
         /**
          * The array of actions registered with WordPress.
          *
-         * @since    1.5.2
-         * @access   protected
-         * @var      array    $actions    The actions registered with WordPress to fire when the WPLegalPages loads.
+         * @since  1.5.2
+         * @access protected
+         * @var    array    $actions    The actions registered with WordPress to fire when the WPLegalPages loads.
          */
 
         protected $actions;
@@ -47,16 +46,16 @@ if ( ! class_exists( 'WP_Legal_Pages_Loader' ) ) {
         /**
          * The array of filters registered with WordPress.
          *
-         * @since    1.5.2
-         * @access   protected
-         * @var      array    $filters    The filters registered with WordPress to fire when the WPLegalPages loads.
+         * @since  1.5.2
+         * @access protected
+         * @var    array    $filters    The filters registered with WordPress to fire when the WPLegalPages loads.
          */
         protected $filters;
 
         /**
          * Initialize the collections used to maintain the actions and filters.
          *
-         * @since    1.5.2
+         * @since 1.5.2
          */
         public function __construct() {
 
@@ -68,15 +67,16 @@ if ( ! class_exists( 'WP_Legal_Pages_Loader' ) ) {
         /**
          * Add a new action to the collection to be registered with WordPress.
          *
-         * @since    1.5.2
-         * @param    string $hook             The name of the WordPress action that is being registered.
-         * @param    object $component        A reference to the instance of the object on which the action is defined.
-         * @param    string $callback         The name of the function definition on the $component.
-         * @param    int    $priority         Optional. he priority at which the function should be fired. Default is 10.
-         * @param    int    $accepted_args    Optional. The number of arguments that should be passed to the $callback. Default is 1.
+         * @since  1.5.2
+         * @param  string $hook             The name of the WordPress action that is being registered.
+         * @param  object $component        A reference to the instance of the object on which the action is defined.
+         * @param  string $callback         The name of the function definition on the $component.
+         * @param  int    $priority         Optional. he priority at which the function should be fired. Default is 10.
+         * @param  int    $accepted_args    Optional. The number of arguments that should be passed to the $callback. Default is 1.
          */
-        public function add_action( $hook, $component, $callback, $priority = 10, $accepted_args = 1 ) {
-            $this->actions = $this->add( $this->actions, $hook, $component, $callback, $priority, $accepted_args );
+        public function add_action($hook, $component, $callback, $priority = 10, $accepted_args = 1) 
+        {
+            $this->actions = $this->add($this->actions, $hook, $component, $callback, $priority, $accepted_args);
         }
 
         /**
@@ -89,8 +89,9 @@ if ( ! class_exists( 'WP_Legal_Pages_Loader' ) ) {
          * @param    int    $priority         Optional. he priority at which the function should be fired. Default is 10.
          * @param    int    $accepted_args    Optional. The number of arguments that should be passed to the $callback. Default is 1.
          */
-        public function add_filter( $hook, $component, $callback, $priority = 10, $accepted_args = 1 ) {
-            $this->filters = $this->add( $this->filters, $hook, $component, $callback, $priority, $accepted_args );
+        public function add_filter($hook, $component, $callback, $priority = 10, $accepted_args = 1) 
+        {
+            $this->filters = $this->add($this->filters, $hook, $component, $callback, $priority, $accepted_args);
         }
 
         /**
@@ -107,15 +108,15 @@ if ( ! class_exists( 'WP_Legal_Pages_Loader' ) ) {
          * @param    int    $accepted_args    The number of arguments that should be passed to the $callback.
          * @return   array                                  The collection of actions and filters registered with WordPress.
          */
-        private function add( $hooks, $hook, $component, $callback, $priority, $accepted_args ) {
+        private function add($hooks, $hook, $component, $callback, $priority, $accepted_args) 
+        {
 
             $hooks[] = array(
                 'hook'          => $hook,
                 'component'     => $component,
                 'callback'      => $callback,
                 'priority'      => $priority,
-                'accepted_args' => $accepted_args,
-            );
+                'accepted_args' => $accepted_args,);
             return $hooks;
 
         }
@@ -123,16 +124,17 @@ if ( ! class_exists( 'WP_Legal_Pages_Loader' ) ) {
         /**
          * Register the filters and actions with WordPress.
          *
-         * @since    1.5.2
+         * @since 1.5.2
          */
-        public function run() {
+        public function run() 
+        {
 
-            foreach ( $this->filters as $hook ) {
-                add_filter( $hook['hook'], array( $hook['component'], $hook['callback'] ), $hook['priority'], $hook['accepted_args'] );
+            foreach ($this->filters as $hook) {
+                add_filter($hook['hook'], array($hook['component'], $hook['callback']), $hook['priority'], $hook['accepted_args']);
             }
 
-            foreach ( $this->actions as $hook ) {
-                add_action( $hook['hook'], array( $hook['component'], $hook['callback'] ), $hook['priority'], $hook['accepted_args'] );
+            foreach ($this->actions as $hook) {
+                add_action($hook['hook'], array($hook['component'], $hook['callback']), $hook['priority'], $hook['accepted_args']);
             }
 
         }
