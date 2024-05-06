@@ -2,11 +2,27 @@
 /**
  * Class for handling the WP Cookie Consent App authentication.
  *
- * @package Wplegalpages
+ * @category   X
+ * @package    Wplegalpages
+ * @subpackage Wplegalpages/includes/settings
+ * @author     Display Name <username@example.com>
+ * @copyright  2019    CyberChimps, Inc.
+ * @license    https://www.gnu.org/licenses/gpl-3.0.html GNU General Public License Version 3
+ * @link       https://club.wpeka.com
+ * @since      3.0.0
  */
 
 /**
  * Class WP_Legal_Pages_App_Auth.
+ * 
+ * @category   X
+ * @package    Wplegalpages
+ * @subpackage Wplegalpages/includes/settings
+ * @author     Display Name <username@example.com>
+ * @copyright  2019    CyberChimps, Inc.
+ * @license    https://www.gnu.org/licenses/gpl-3.0.html GNU General Public License Version 3
+ * @link       https://club.wpeka.com
+ * @since      3.0.0
  */
 class WP_Legal_Pages_App_Auth {
 
@@ -55,7 +71,8 @@ class WP_Legal_Pages_App_Auth {
      *
      * @since 3.0.0
      */
-    public function __construct() {
+    public function __construct() 
+    {
         // Add AJAX actions for authentication.
         if (is_admin()) {
             add_action('wp_ajax_wp_legal_pages_app_start_auth', array($this, 'ajax_auth_url'));
@@ -275,8 +292,10 @@ class WP_Legal_Pages_App_Auth {
     /**
      * Add a new request argument for GET requests
      *
-     * @param string $name   Argument name.
-     * @param string $value  Argument value.
+     * @param string $name  Argument name.
+     * @param string $value Argument value.
+     * 
+     * @return nothing
      */
     public function add_header_argument($name, $value) 
     {

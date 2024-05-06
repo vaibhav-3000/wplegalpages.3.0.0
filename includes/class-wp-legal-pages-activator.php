@@ -1,13 +1,15 @@
 <?php
 /**
  * Fired during WPLegalPages activation
- * 
- * @package    WP_Legal_Pages
- * @subpackage WP_Legal_Pages/includes
+ *
+ * @category   X
+ * @package    Wplegalpages
+ * @subpackage Wplegalpages/includes/settings
+ * @author     Display Name <username@example.com>
+ * @copyright  2019    CyberChimps, Inc.
+ * @license    https://www.gnu.org/licenses/gpl-3.0.html GNU General Public License Version 3
  * @link       http://wplegalpages.com/
  * @since      1.5.2
- *
-
  */
 
 /**
@@ -26,20 +28,27 @@ if (! class_exists('WP_Legal_Pages_Activator')) {
      *
      * This class defines all code necessary to run during the WPLegalPages's activation.
      *
+     * @category   X
      * @package    WP_Legal_Pages
      * @subpackage WP_Legal_Pages/includes
      * @author     WPEka <support@wplegalpages.com>
+     * @license    https://www.gnu.org/licenses/gpl-3.0.html GNU General Public License Version 3
+     * @link       http://wplegalpages.com/
      * @since      1.5.2
      */
-    class WP_Legal_Pages_Activator {
+    class WP_Legal_Pages_Activator 
+    {
         /**
          * Short Description. (use period)
          *
          * Long Description.
          *
          * @since 1.5.2
+         * 
+         * @return nothing
          */
-        public static function activate() {
+        public static function activate() 
+        {
 
             global $wpdb;
             include_once ABSPATH . 'wp-admin/includes/upgrade.php';
@@ -58,6 +67,8 @@ if (! class_exists('WP_Legal_Pages_Activator')) {
 
         /**
          * Install required tables.
+         * 
+         * @return nothing
          */
         public static function install_db() 
         {

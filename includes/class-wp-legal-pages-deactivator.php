@@ -1,9 +1,13 @@
 <?php
 /**
  * Fired during WPLegalPages deactivation
- *
+ * 
+ * @category   X
  * @package    WP_Legal_Pages
  * @subpackage WP_Legal_Pages/includes
+ * @author     Display Name <username@example.com>
+ * @copyright  2019    CyberChimps, Inc.
+ * @license    https://www.gnu.org/licenses/gpl-3.0.html GNU General Public License Version 3
  * @link       http://wplegalpages.com/
  * @since      1.5.2
  */
@@ -24,9 +28,13 @@ if (! class_exists('WP_Legal_Pages_Deactivator')) {
      *
      * This class defines all code necessary to run during the WPLegalPages's deactivation.
      *
+     * @category   X
      * @package    WP_Legal_Pages
      * @subpackage WP_Legal_Pages/includes
      * @author     WPEka <support@wplegalpages.com>
+     * @copyright  2019    CyberChimps, Inc.
+     * @license    https://www.gnu.org/licenses/gpl-3.0.html GNU General Public License Version 3
+     * @link       http://wplegalpages.com/
      * @since      1.5.2
      */
     class WP_Legal_Pages_Deactivator 
@@ -37,8 +45,11 @@ if (! class_exists('WP_Legal_Pages_Deactivator')) {
          * Long Description.
          *
          * @since 1.5.2
+         * 
+         * @return nothing
          */
-        public static function deactivate() {
+        public static function deactivate() 
+        {
             global $wpdb;
             include_once ABSPATH . 'wp-admin/includes/upgrade.php';
             if (is_multisite()) {

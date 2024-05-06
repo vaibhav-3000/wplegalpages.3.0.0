@@ -2,8 +2,12 @@
 /**
  * Register all actions and filters for the WPLegalPages
  *
+ * @category   X
  * @package    WP_Legal_Pages
  * @subpackage WP_Legal_Pages/includes
+ * @author     Display Name <username@example.com>
+ * @copyright  2019    CyberChimps, Inc.
+ * @license    https://www.gnu.org/licenses/gpl-3.0.html GNU General Public License Version 3
  * @link       http://wplegalpages.com/
  * @since      1.5.2
  */
@@ -27,11 +31,17 @@ if (! class_exists('WP_Legal_Pages_Loader')) {
      * the WPLegalPages, and register them with the WordPress API. Call the
      * run function to execute the list of actions and filters.
      *
+     * @category   X
      * @package    WP_Legal_Pages
      * @subpackage WP_Legal_Pages/includes
      * @author     WPEka <support@wplegalpages.com>
+     * @copyright  2019    CyberChimps, Inc.
+     * @license    https://www.gnu.org/licenses/gpl-3.0.html GNU General Public License Version 3
+     * @link       http://wplegalpages.com/
+     * @since      1.5.2
      */
-    class WP_Legal_Pages_Loader {
+    class WP_Legal_Pages_Loader 
+    {
 
         /**
          * The array of actions registered with WordPress.
@@ -57,7 +67,8 @@ if (! class_exists('WP_Legal_Pages_Loader')) {
          *
          * @since 1.5.2
          */
-        public function __construct() {
+        public function __construct() 
+        {
 
             $this->actions = array();
             $this->filters = array();
@@ -67,12 +78,14 @@ if (! class_exists('WP_Legal_Pages_Loader')) {
         /**
          * Add a new action to the collection to be registered with WordPress.
          *
+         * @param string $hook          The name of the WordPress action that is being registered.
+         * @param object $component     A reference to the instance of the object on which the action is defined.
+         * @param string $callback      The name of the function definition on the $component.
+         * @param int    $priority      Optional. he priority at which the function should be fired. Default is 10.
+         * @param int    $accepted_args Optional. The number of arguments that should be passed to the $callback. Default is 1.
+         * 
          * @since  1.5.2
-         * @param  string $hook             The name of the WordPress action that is being registered.
-         * @param  object $component        A reference to the instance of the object on which the action is defined.
-         * @param  string $callback         The name of the function definition on the $component.
-         * @param  int    $priority         Optional. he priority at which the function should be fired. Default is 10.
-         * @param  int    $accepted_args    Optional. The number of arguments that should be passed to the $callback. Default is 1.
+         * @return nothing
          */
         public function add_action($hook, $component, $callback, $priority = 10, $accepted_args = 1) 
         {
@@ -82,12 +95,14 @@ if (! class_exists('WP_Legal_Pages_Loader')) {
         /**
          * Add a new filter to the collection to be registered with WordPress.
          *
-         * @since    1.5.2
-         * @param    string $hook             The name of the WordPress filter that is being registered.
-         * @param    object $component        A reference to the instance of the object on which the filter is defined.
-         * @param    string $callback         The name of the function definition on the $component.
-         * @param    int    $priority         Optional. he priority at which the function should be fired. Default is 10.
-         * @param    int    $accepted_args    Optional. The number of arguments that should be passed to the $callback. Default is 1.
+         * @param string $hook          The name of the WordPress action that is being registered.
+         * @param object $component     A reference to the instance of the object on which the action is defined.
+         * @param string $callback      The name of the function definition on the $component.
+         * @param int    $priority      Optional. he priority at which the function should be fired. Default is 10.
+         * @param int    $accepted_args Optional. The number of arguments that should be passed to the $callback. Default is 1.
+         * 
+         * @since  1.5.2
+         * @return nothing
          */
         public function add_filter($hook, $component, $callback, $priority = 10, $accepted_args = 1) 
         {
@@ -98,15 +113,16 @@ if (! class_exists('WP_Legal_Pages_Loader')) {
          * A utility function that is used to register the actions and hooks into a single
          * collection.
          *
-         * @since    1.5.2
-         * @access   private
-         * @param    array  $hooks            The collection of hooks that is being registered (that is, actions or filters).
-         * @param    string $hook             The name of the WordPress filter that is being registered.
-         * @param    object $component        A reference to the instance of the object on which the filter is defined.
-         * @param    string $callback         The name of the function definition on the $component.
-         * @param    int    $priority         The priority at which the function should be fired.
-         * @param    int    $accepted_args    The number of arguments that should be passed to the $callback.
-         * @return   array                                  The collection of actions and filters registered with WordPress.
+         * @param array  $hooks         The collection of hooks that is being registered (that is, actions or filters).
+         * @param string $hook          The name of the WordPress filter that is being registered.
+         * @param object $component     A reference to the instance of the object on which the filter is defined.
+         * @param string $callback      The name of the function definition on the $component.
+         * @param int    $priority      The priority at which the function should be fired.
+         * @param int    $accepted_args The number of arguments that should be passed to the $callback.
+         * 
+         * @since  1.5.2
+         * @access private 
+         * @return array   The collection of actions and filters registered with WordPress.
          */
         private function add($hooks, $hook, $component, $callback, $priority, $accepted_args) 
         {
@@ -125,6 +141,8 @@ if (! class_exists('WP_Legal_Pages_Loader')) {
          * Register the filters and actions with WordPress.
          *
          * @since 1.5.2
+         * 
+         * @return nothing
          */
         public function run() 
         {
