@@ -5,11 +5,12 @@
  *
  * This file is used to markup the settings facing aspects of the WP Legal Pages plugin.
  *
- * @package Wplegalpages
- * @link    https://wplegalpages.com/
- * @since   2.10.0
- *
- * 
+ * @category X
+ * @package  Wplegalpages
+ * @author   Display Name <username@example.com>
+ * @license  username@example.com X
+ * @link     https://wplegalpages.com/
+ * @since    2.10.0 
  */
 
 if (!defined('ABSPATH')) {

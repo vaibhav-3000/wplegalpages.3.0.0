@@ -5,10 +5,12 @@
  *
  * This file is used to markup the admin-facing aspects of the WP Legal Pages plugin.
  * 
- * @package Wplegalpages
- * @link    https://wplegalpages.com/
- * @since   3.0.0
- *
+ * @category X
+ * @package  Wplegalpages
+ * @author   Display Name <username@example.com>
+ * @license  username@example.com X
+ * @link     https://wplegalpages.com/
+ * @since    3.0.0
  */
 
 $pro_is_activated      = get_option('_lp_pro_active');
