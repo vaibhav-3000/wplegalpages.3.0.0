@@ -1,24 +1,31 @@
 <?php
 /**
  * The widget-specific functionality for WPLegalPages.
- *
- * @link       https://club.wpeka.com/
- * @since      1.0.0
- *
+ * 
+ * @category   X
  * @package    WP_Legal_Pages
  * @subpackage WP_Legal_Pages/widgets
+ * @author     Display Name <username@example.com>
+ * @copyright  2019    CyberChimps, Inc.
+ * @license    https://www.gnu.org/licenses/gpl-3.0.html GNU General Public License Version 3
+ * @link       https://club.wpeka.com/
+ * @since      1.0.0
  */
 
 /**
  * The widget-specific functionality for WPLegalPages.
  *
- * @link       https://club.wpeka.com/
- * @since      1.0.0
- *
+ * @category   X
  * @package    WP_Legal_Pages
  * @subpackage WP_Legal_Pages/widgets
+ * @author     Display Name <username@example.com>
+ * @copyright  2019    CyberChimps, Inc.
+ * @license    https://www.gnu.org/licenses/gpl-3.0.html GNU General Public License Version 3
+ * @link       https://club.wpeka.com/
+ * @since      1.0.0
  */
-class WP_Widget_Legal_Pages extends WP_Widget {
+class WP_Widget_Legal_Pages extends WP_Widget
+{
 
     /**
      * Sets up a new WPLegalPages widget instance.
@@ -38,11 +45,13 @@ class WP_Widget_Legal_Pages extends WP_Widget {
     /**
      * Outputs the content for the current WPLegalPages widget instance.
      *
-     * @since 2.4.8
-     *
      * @param array $args     Display arguments including 'before_title', 'after_title',
      *                        'before_widget', and 'after_widget'.
      * @param array $instance Settings for the current WPLegalPages widget instance.
+     * 
+     * @since 2.4.8
+     * 
+     * @return nothing
      */
     public function widget($args, $instance) 
     {
@@ -52,11 +61,11 @@ class WP_Widget_Legal_Pages extends WP_Widget {
         /**
          * Filters the widget title.
          *
-         * @since 2.4.8
-         *
          * @param string $title    The widget title. Default 'WPLegalPages'.
          * @param array  $instance Array of settings for the current widget.
          * @param mixed  $id_base  The widget ID.
+         * 
+         * @since 2.4.8
          */
         $title = apply_filters('widget_title', $title, $instance, $this->id_base);
 
@@ -71,12 +80,12 @@ class WP_Widget_Legal_Pages extends WP_Widget {
         /**
          * Filters the arguments for the WPLegalPages widget.
          *
+         * @param array $args     An array of arguments to retrieve the pages list.
+         * @param array $instance Array of settings for the current widget.
+         * 
          * @since 2.4.8
          *
          * @see wp_list_pages()
-         *
-         * @param array $args     An array of arguments to retrieve the pages list.
-         * @param array $instance Array of settings for the current widget.
          */
             apply_filters(
                 'widget_pages_args',
@@ -101,7 +110,9 @@ class WP_Widget_Legal_Pages extends WP_Widget {
 
             $format = current_theme_supports('html5', 'navigation-widgets') ? 'html5' : 'xhtml';
 
-            /** This filter is documented in wp-includes/widgets/class-wp-nav-menu-widget.php */
+            /** 
+             * This filter is documented in wp-includes/widgets/class-wp-nav-menu-widget.php  
+            */
             $format = apply_filters('navigation_widgets_format', $format);
 
             if ('html5' === $format) {
@@ -130,12 +141,13 @@ class WP_Widget_Legal_Pages extends WP_Widget {
     /**
      * Handles updating settings for the current WPLegalPages widget instance.
      *
-     * @since 2.4.8
-     *
      * @param array $new_instance New settings for this instance as input by the user via
      *                            WP_Widget::form().
      * @param array $old_instance Old settings for this instance.
-     * @return array Updated settings to save.
+     * 
+     * @return array Updated       settings to save.
+     * 
+     * @since 2.4.8
      */
     public function update($new_instance, $old_instance) 
     {
@@ -155,9 +167,11 @@ class WP_Widget_Legal_Pages extends WP_Widget {
     /**
      * Outputs the settings form for the WPLegalPages widget.
      *
-     * @since 2.4.8
-     *
      * @param array $instance Current settings.
+     * 
+     * @since 2.4.8
+     * 
+     * @return nothing
      */
     public function form($instance) 
     {
@@ -197,6 +211,8 @@ class WP_Widget_Legal_Pages extends WP_Widget {
 
 /**
  * Register and load the widget.
+ * 
+ * @return nothing
  */
 function wplegalpages_load_widget() 
 {

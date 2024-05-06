@@ -10,7 +10,13 @@
  * Text Domain: wplegalpages
  * Domain Path: /languages
  *
- * @package           Wplegalpages
+ * @category  X
+ * @package   WP_Legal_Pages
+ * @author    Display Name <username@example.com>
+ * @copyright 2019    CyberChimps, Inc.
+ * @license   https://www.gnu.org/licenses/gpl-3.0.html GNU General Public License Version 3
+ * @link      https://club.wpeka.com/
+ * @since     1.0.0
  */
 
 // If this file is called directly, abort.
@@ -77,6 +83,8 @@ if (! function_exists('activate_wp_legal_pages')) {
     /**
      * The code that runs during WPLegalPages activation.
      * This action is documented in includes/class-wp-legal-pages-activator.php
+     * 
+     * @return nothing
      */
     function activate_wp_legal_pages() 
     {
@@ -94,6 +102,8 @@ if (! function_exists('deactivate_wp_legal_pages')) {
     /**
      * The code that runs during WPLegalPages deactivation.
      * This action is documented in includes/class-plugin-name-deactivator.php
+     * 
+     * @return nothing
      */
     function deactivate_wp_legal_pages() 
     {
@@ -105,6 +115,8 @@ if (! function_exists('delete_wp_legal_pages')) {
     /**
      * The code that runs during WPLegalPages delete.
      * This action is documented in includes/class-plugin-name-delete.php
+     * 
+     * @return nothing
      */
     function delete_wp_legal_pages() 
     {
@@ -132,9 +144,12 @@ require plugin_dir_path(__FILE__) . 'includes/class-wp-legal-pages.php';
  * then kicking off the WPLegalPages from this point in the file does
  * not affect the page life cycle.
  *
- * @since    1.0.0
+ * @since 1.0.0
+ * 
+ * @return nothing
  */
-function run_wp_legal_pages() {
+function run_wp_legal_pages() 
+{
     $legal_pages = new WP_Legal_Pages();
     $legal_pages->run();
 }

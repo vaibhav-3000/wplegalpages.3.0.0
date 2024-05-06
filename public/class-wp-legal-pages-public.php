@@ -29,9 +29,12 @@ if (! class_exists('WP_Legal_Pages_Public')) {
      * Defines the plugin name, version, and two examples hooks for how to
      * enqueue the admin-specific stylesheet and JavaScript.
      *
+     * @category   X
      * @package    WP_Legal_Pages
      * @subpackage WP_Legal_Pages/includes
      * @author     WPEka <support@wplegalpages.com>
+     * @license    https://www.gnu.org/licenses/gpl-3.0.html GNU General Public License Version 3
+     * @link       https://wplegalpages.com/
      */
     class WP_Legal_Pages_Public 
     {
