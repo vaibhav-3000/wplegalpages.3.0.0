@@ -57,11 +57,11 @@ if (! class_exists('WP_Legal_Pages_Activator')) {
                 $blog_ids = $wpdb->get_col('SELECT blog_id FROM ' . $wpdb->blogs); // db call ok; no-cache ok.
                 foreach ($blog_ids as $blog_id) {
                     switch_to_blog($blog_id);
-                    self::install_db();
+                    self::installDb();
                     restore_current_blog();
                 }
             } else {
-                self::install_db();
+                self::installDb();
             }
         }
 
@@ -70,7 +70,7 @@ if (! class_exists('WP_Legal_Pages_Activator')) {
          * 
          * @return nothing
          */
-        public static function install_db() 
+        public static function installDb() 
         {
             global $wpdb;
 

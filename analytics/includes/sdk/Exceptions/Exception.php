@@ -25,17 +25,18 @@ if (! class_exists('Analytics_Exception')) {
      */
     class Analytics_Exception extends Exception
     {
-        protected $_result;
-        protected $_type;
-        protected $_code;
+        protected $result;
+        protected $type;
+        protected $code;
 
         /**
          * Make a new API Exception with the given result.
          *
          * @param array $result The result from the API server.
          */
-        public function __construct($result) {
-            $this->_result = $result;
+        public function __construct($result) 
+        {
+            $this->result = $result;
 
             $code    = 0;
             $message = 'Unknown error, please check GetResult().';
@@ -69,14 +70,23 @@ if (! class_exists('Analytics_Exception')) {
             return $this->_result;
         }
 
+        /**
+         * Return the associated code object returned by the API server.
+         *
+         * @return array The result from the API server
+         */
         public function getStringCode() 
         {
-            return $this->_code;
+            return $this->code;
         }
-
+        /**
+         * Return the associated type object returned by the API server.
+         *
+         * @return array The result from the API server
+         */
         public function getType() 
         {
-            return $this->_type;
+            return $this->type;
         }
 
         /**

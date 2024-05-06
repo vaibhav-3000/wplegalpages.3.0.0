@@ -15,7 +15,18 @@
 if (! defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
-
+/**
+ * WP Legal Pages API Frameworks settings
+ *
+ * @category   X
+ * @package    Wplegalpages
+ * @subpackage Wplegalpages/includes/settings
+ * @author     Display Name <username@example.com>
+ * @copyright  2019    CyberChimps, Inc.
+ * @license    https://www.gnu.org/licenses/gpl-3.0.html GNU General Public License Version 3
+ * @link       https://club.wpeka.com
+ * @since      3.0.0
+ */
 class WP_Legal_Pages_Settings
 {
     /**
@@ -30,14 +41,14 @@ class WP_Legal_Pages_Settings
      *
      * @var object
      */
-    private static $instance;
+    private static $_instance;
 
     /**
      * Return the current instance of the class
      *
      * @return object
      */
-    public static function get_instance() 
+    public static function getInstance() 
     {
         if (null === self::$instance) {
             self::$instance = new self();
@@ -57,7 +68,7 @@ class WP_Legal_Pages_Settings
      *
      * @return array
      */
-    public function get_defaults() 
+    public function getDefaults() 
     {
 
         return array(
@@ -84,7 +95,8 @@ class WP_Legal_Pages_Settings
      * 
      * @return array
      */
-    public function get($group = '', $key = '') {
+    public function get($group = '', $key = '') 
+    {
         $settings = get_option('wplegal_api_framework_app_settings', $this->data);
 
         if (empty($key) && empty($group)) {
@@ -105,7 +117,8 @@ class WP_Legal_Pages_Settings
      * 
      * @return void
      */
-    public function update($data) {
+    public function update($data) 
+    {
 
         $settings = get_option('wplegal_api_framework_app_settings', $this->data);
         if (empty($settings)) {
@@ -123,7 +136,7 @@ class WP_Legal_Pages_Settings
      *
      * @return string
      */
-    public function get_token() 
+    public function getToken() 
     {
         return $this->get('api', 'token');
     }
@@ -133,7 +146,7 @@ class WP_Legal_Pages_Settings
      *
      * @return string
      */
-    public function get_website_key() 
+    public function getWebsiteKey() 
     {
         return $this->get('account', 'site_key');
     }
@@ -143,7 +156,7 @@ class WP_Legal_Pages_Settings
      *
      * @return string
      */
-    public function get_user_id() 
+    public function getUserId() 
     {
         return $this->get('account', 'id');
     }
@@ -153,7 +166,7 @@ class WP_Legal_Pages_Settings
      *
      * @return string
      */
-    public function get_plan() 
+    public function getPlan() 
     {
         return $this->get('account', 'plan');
     }
@@ -163,7 +176,7 @@ class WP_Legal_Pages_Settings
      *
      * @return string
      */
-    public function get_email() 
+    public function getEmail() 
     {
         return $this->get('account', 'email');
     }
@@ -173,7 +186,7 @@ class WP_Legal_Pages_Settings
      *
      * @return boolean
      */
-    public function is_connected() 
+    public function isConnected() 
     {
         return $this->get('account', 'connected');
     }

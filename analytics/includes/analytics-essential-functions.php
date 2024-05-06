@@ -15,7 +15,7 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
-if (! function_exists('as_normalize_path')) {
+if (! function_exists('asNormalizePath')) {
     /**
      * Normalize path.
      *
@@ -23,7 +23,7 @@ if (! function_exists('as_normalize_path')) {
      * 
      * @return mixed|string|string[]|null
      */
-    function as_normalize_path($path) 
+    function asNormalizePath($path) 
     {
         if (function_exists('wp_normalize_path')) {
             return wp_normalize_path($path);

@@ -40,13 +40,13 @@ if (! defined('WPLEGAL_APP_URL')) {
     define('WPLEGAL_APP_URL', 'https://app.wplegalpages.com');
 }
 
-if (! function_exists('wplp_fs')) {
+if (! function_exists('wplpFs')) {
     /**
      * Helper function to access SDK.
      *
      * @return Analytics
      */
-    function wplp_fs() 
+    function wplpFs() 
     {
         global $wplp_fs;
 
@@ -79,14 +79,14 @@ if (! defined('WPLPP_SUFFIX')) {
     define('WPLPP_SUFFIX', (defined('SCRIPT_DEBUG') && SCRIPT_DEBUG) ? '' : '.min');
 }
 
-if (! function_exists('activate_wp_legal_pages')) {
+if (! function_exists('activateWpLegalPages')) {
     /**
      * The code that runs during WPLegalPages activation.
      * This action is documented in includes/class-wp-legal-pages-activator.php
      * 
      * @return nothing
      */
-    function activate_wp_legal_pages() 
+    function activateWpLegalPages() 
     {
         include_once plugin_dir_path(__FILE__) . 'includes/class-wp-legal-pages-activator.php';
         WP_Legal_Pages_Activator::activate();
@@ -98,14 +98,14 @@ if (! function_exists('activate_wp_legal_pages')) {
  * The code that runs during WPLegalPages deactivation.
  * This action is documented in includes/class-plugin-name-deactivator.php
  */
-if (! function_exists('deactivate_wp_legal_pages')) {
+if (! function_exists('deactivateWpLegalPages')) {
     /**
      * The code that runs during WPLegalPages deactivation.
      * This action is documented in includes/class-plugin-name-deactivator.php
      * 
      * @return nothing
      */
-    function deactivate_wp_legal_pages() 
+    function deactivateWpLegalPages() 
     {
         include_once plugin_dir_path(__FILE__) . 'includes/class-wp-legal-pages-deactivator.php';
         WP_Legal_Pages_Deactivator::deactivate();
@@ -118,15 +118,15 @@ if (! function_exists('delete_wp_legal_pages')) {
      * 
      * @return nothing
      */
-    function delete_wp_legal_pages() 
+    function deleteWpLegalPages() 
     {
         include_once plugin_dir_path(__FILE__) . 'includes/class-wp-legal-pages-delete.php';
         WP_Legal_Pages_Delete::delete();
     }
 }
-register_activation_hook(__FILE__, 'activate_wp_legal_pages');
-register_deactivation_hook(__FILE__, 'deactivate_wp_legal_pages');
-register_uninstall_hook(__FILE__, 'delete_wp_legal_pages');
+register_activation_hook(__FILE__, 'activateWpLegalPages');
+register_deactivation_hook(__FILE__, 'deactivateWpLegalPages');
+register_uninstall_hook(__FILE__, 'deleteWpLegalPages');
 
 
 
@@ -148,9 +148,9 @@ require plugin_dir_path(__FILE__) . 'includes/class-wp-legal-pages.php';
  * 
  * @return nothing
  */
-function run_wp_legal_pages() 
+function runWpLegalPages() 
 {
     $legal_pages = new WP_Legal_Pages();
     $legal_pages->run();
 }
-run_wp_legal_pages();
+runWpLegalPages();

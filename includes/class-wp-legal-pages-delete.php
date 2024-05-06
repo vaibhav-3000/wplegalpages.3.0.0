@@ -59,11 +59,11 @@ if (! class_exists('WP_Legal_Pages_Delete')) {
                 $blog_ids = $wpdb->get_col('SELECT blog_id FROM ' . $wpdb->blogs); // db call ok; no-cache ok.
                 foreach ($blog_ids as $blog_id) {
                     switch_to_blog($blog_id);
-                    self::delete_db();
+                    self::deleteDb();
                     restore_current_blog();
                 }
             } else {
-                self::delete_db();
+                self::deleteDb();
             }
         }
 
@@ -72,7 +72,7 @@ if (! class_exists('WP_Legal_Pages_Delete')) {
          * 
          * @return nothing
          */
-        public static function delete_db() 
+        public static function deleteDb() 
         {
             global $wpdb;
             include_once ABSPATH . 'wp-admin/includes/upgrade.php';

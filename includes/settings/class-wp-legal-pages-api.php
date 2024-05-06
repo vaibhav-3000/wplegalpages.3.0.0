@@ -26,7 +26,8 @@ if (! defined('ABSPATH')) {
  * @link      https://wplegalpages.com/
  * @since     1.0.0
  */
-class WP_Legal_Pages_Api extends WP_REST_Controller {
+class WP_Legal_Pages_Api extends WP_REST_Controller
+{
 
     /**
      * Endpoint namespace.
@@ -47,7 +48,7 @@ class WP_Legal_Pages_Api extends WP_REST_Controller {
      */
     public function __construct() 
     {
-        add_action('rest_api_init', array($this, 'register_routes'), 10);
+        add_action('rest_api_init', array($this, 'registerRoutes'), 10);
     }
 
     /**
@@ -55,7 +56,7 @@ class WP_Legal_Pages_Api extends WP_REST_Controller {
      *
      * @return void
      */
-    public function register_routes() 
+    public function registerRoutes() 
     {
 
         register_rest_route(
@@ -64,8 +65,8 @@ class WP_Legal_Pages_Api extends WP_REST_Controller {
             array(
                 array(
                     'methods'             => WP_REST_Server::CREATABLE,
-                    'callback'            => array($this, 'get_items'),
-                    'permission_callback' => array($this, 'create_items_permissions_check'),),)
+                    'callback'            => array($this, 'getItems'),
+                    'permission_callback' => array($this, 'createItemsPermissionsCheck'),),)
         );
     }
 
@@ -76,7 +77,7 @@ class WP_Legal_Pages_Api extends WP_REST_Controller {
      * 
      * @return WP_Error|WP_REST_Response
      */
-    public function get_items($request) 
+    public function getItems($request) 
     {
 
         include_once plugin_dir_path(dirname(__FILE__)) . 'settings/class-wp-legal-pages-settings.php';
@@ -88,11 +89,11 @@ class WP_Legal_Pages_Api extends WP_REST_Controller {
     /**
      * Check if a given request has access to read items.
      *
-     * @param  WP_REST_Request $request Full details about the request.
+     * @param WP_REST_Request $request Full details about the request.
      * 
      * @return WP_Error|boolean
      */
-    public function create_items_permissions_check($request) 
+    public function createItemsPermissionsCheck($request) 
     {
 
         $permission_check = false;

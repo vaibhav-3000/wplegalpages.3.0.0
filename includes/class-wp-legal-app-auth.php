@@ -24,7 +24,8 @@
  * @link       https://club.wpeka.com
  * @since      3.0.0
  */
-class WP_Legal_Pages_App_Auth {
+class WP_Legal_Pages_App_Auth
+{
 
     /**
      * Base URL of WP Legal Pages App API
@@ -36,35 +37,35 @@ class WP_Legal_Pages_App_Auth {
      *
      * @var bool
      */
-    private $has_auth;
+    private $_has_auth;
 
     /**
      * The api key used for authenticated requests to the WPLegalPages App.
      *
      * @var string
      */
-    private $auth_key;
+    private $_auth_key;
 
     /**
      * The auth data from the db.
      *
      * @var array
      */
-    private $auth_data;
+    private $_auth_data;
 
     /**
      * Header arguments
      *
      * @var array
      */
-    private $headers = array();
+    private $_headers = array();
 
     /**
      * Request max timeout
      *
      * @var int
      */
-    private $timeout = 180;
+    private $_timeout = 180;
 
     /**
      * Constructor.
@@ -86,7 +87,7 @@ class WP_Legal_Pages_App_Auth {
      *
      * @return void
      */
-    public function ajax_auth_url() 
+    public function ajaxAuthUrl() 
     {
 
         // Verify AJAX nonce.
@@ -124,7 +125,7 @@ class WP_Legal_Pages_App_Auth {
      *
      * @return string
      */
-    public function get_api_url($path) 
+    public function getApiUrl($path) 
     {
 
         return trailingslashit(WPLEGAL_APP_URL) . $path;
@@ -138,7 +139,7 @@ class WP_Legal_Pages_App_Auth {
      *
      * @return string
      */
-    public function get_api_path($path) 
+    public function getApiPath($path) 
     {
         return trailingslashit(self::API_BASE_PATH) . $path;
     }
@@ -148,7 +149,7 @@ class WP_Legal_Pages_App_Auth {
      *
      * @return void
      */
-    public function store_auth_key() 
+    public function storeAuthKey() 
     {
 
         // Verify AJAX nonce.
@@ -186,7 +187,7 @@ class WP_Legal_Pages_App_Auth {
      *
      * @return void
      */
-    public function delete_app_auth() 
+    public function deleteAppAuth() 
     {
 
         // Verify AJAX nonce.
@@ -235,7 +236,7 @@ class WP_Legal_Pages_App_Auth {
      *
      * @return bool Whether the site is authenticated.
      */
-    public function has_auth() 
+    public function hasAuth() 
     {
         if (! isset($this->has_auth)) {
             $auth_key = $this->get_auth_key();
@@ -250,7 +251,7 @@ class WP_Legal_Pages_App_Auth {
      *
      * @return bool|string he auth key if available, otherwise false.
      */
-    public function get_auth_key() 
+    public function getAuthKey() 
     {
         if (! isset($this->auth_key)) {
             $data           = $this->get_auth_data();
@@ -264,7 +265,7 @@ class WP_Legal_Pages_App_Auth {
      *
      * @return array|bool The auth data if available, otherwise false.
      */
-    public function get_auth_data() 
+    public function getAuthData() 
     {
         if (! isset($this->auth_data)) {
             $this->auth_data = get_option('wplegal_api_framework_app_settings', false);
@@ -297,7 +298,7 @@ class WP_Legal_Pages_App_Auth {
      * 
      * @return nothing
      */
-    public function add_header_argument($name, $value) 
+    public function addHeaderArgument($name, $value) 
     {
         $this->headers[ $name ] = $value;
     }
@@ -307,7 +308,7 @@ class WP_Legal_Pages_App_Auth {
      *
      * @return void
      */
-    protected function make_auth_request() 
+    protected function makeAuthRequest() 
     {
 
         $api_key = $this->get_auth_key();

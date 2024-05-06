@@ -38,7 +38,7 @@ if (! class_exists('WP_Legal_Pages_Wizard_Page')) {
          *
          * @var array $settings legalpages settings
          */
-        private $settings;
+        private $_settings;
 
 
         /**
@@ -46,7 +46,7 @@ if (! class_exists('WP_Legal_Pages_Wizard_Page')) {
          *
          * @return array
          */
-        public function get_settings() 
+        public function getSettings() 
         {
             return $this->settings;
         }
@@ -58,7 +58,7 @@ if (! class_exists('WP_Legal_Pages_Wizard_Page')) {
          * 
          * @return array
          */
-        public function set_settings($settings) 
+        public function setSettings($settings) 
         {
             $this->settings = $settings;
         }
@@ -68,7 +68,7 @@ if (! class_exists('WP_Legal_Pages_Wizard_Page')) {
          *
          * @return array|mixed
          */
-        public function get_available_languages() 
+        public function getAvailableLanguages() 
         {
             $available_languages = get_site_transient('wplegal_available_languages');
             if (! $available_languages) {
@@ -92,7 +92,7 @@ if (! class_exists('WP_Legal_Pages_Wizard_Page')) {
          * 
          * @return mixed|void
          */
-        public function get_pid_by_page($page) 
+        public function getPidByPage($page) 
         {
             switch ($page) {
             case 'terms_of_use':
@@ -215,7 +215,7 @@ if (! class_exists('WP_Legal_Pages_Wizard_Page')) {
          * 
          * @return array|mixed
          */
-        public function get_remote_data($data = '') 
+        public function getRemoteData($data = '') 
         {
             $content         = array();
             $response        = wp_remote_get(WPLEGAL_API_URL . $data);
@@ -234,7 +234,7 @@ if (! class_exists('WP_Legal_Pages_Wizard_Page')) {
          * 
          * @return string
          */
-        public function get_preview_by_page($page, $language) 
+        public function getPreviewByPage($page, $language) 
         {
             $preview_text = $this->get_page_preview_text($page, $language);
             $pid          = $this->get_pid_by_page($page);
@@ -523,7 +523,7 @@ if (! class_exists('WP_Legal_Pages_Wizard_Page')) {
          * 
          * @return array
          */
-        public function get_setting_fields_by_page($page) 
+        public function getSettingFieldsByPage($page) 
         {
             $fields        = array();
             $lp_general    = get_option('lp_general');
@@ -1099,7 +1099,7 @@ if (! class_exists('WP_Legal_Pages_Wizard_Page')) {
          * 
          * @return int|void|WP_Error
          */
-        public function get_pid_by_insert_page($page, $title = '') 
+        public function getPidByInsertPage($page, $title = '') 
         {
             $lp_general = get_option('lp_general');
             $content    = $this->get_preview_from_remote($page, array(), $lp_general, $lp_general['language']);
@@ -1124,7 +1124,7 @@ if (! class_exists('WP_Legal_Pages_Wizard_Page')) {
          * 
          * @return array|mixed
          */
-        public function get_section_fields_by_page($page) 
+        public function getSectionFieldsByPage($page) 
         {
             $fields = array();
             $pid    = $this->get_pid_by_page($page);
@@ -1360,7 +1360,7 @@ if (! class_exists('WP_Legal_Pages_Wizard_Page')) {
          *
          * @return array|mixed
          */
-        public function get_custom_legal_page_fields() 
+        public function getCustomLegalPageFields() 
         {
             $fields = (object) array(
                 'general_information' => (object) array(
@@ -1421,7 +1421,7 @@ if (! class_exists('WP_Legal_Pages_Wizard_Page')) {
          * 
          * @return string
          */
-        public function get_page_preview_text($page) 
+        public function getPagePreviewText($page) 
         {
             $lp_general                 = get_option('lp_general');
             $lp_general['last_updated'] = gmdate('F j, Y');
@@ -2189,7 +2189,7 @@ if (! class_exists('WP_Legal_Pages_Wizard_Page')) {
          * 
          * @return mixed|string
          */
-        private function get_preview_from_remote($page, $options, $lp_general, $lang = 'en_US') 
+        private function _getPreviewFromRemote($page, $options, $lp_general, $lang = 'en_US') 
         {
             $text = '';
 

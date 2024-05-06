@@ -128,7 +128,8 @@ class Analytics
      * @author CyberChimps
      * @since  1.0.0
      */
-    private function __construct($module_id, $product_name, $version, $module_type, $slug = false, $plugin_basename = '', $plugin_url = '') {
+    private function __construct($module_id, $product_name, $version, $module_type, $slug = false, $plugin_basename = '', $plugin_url = '') 
+    {
         $this->_module_id    = $module_id;
         $this->_slug         = $slug;
         $this->_module_type  = $module_type;
@@ -184,7 +185,7 @@ class Analytics
      * 
      * @return nothing
      */
-    private static function _load_required_static() 
+    private static function _loadRequiredStatic() 
     {
         if (self::$_statics_loaded) {
             return;
@@ -210,7 +211,8 @@ class Analytics
      * 
      * @return nothing
      */
-    public function dynamic_init(array $plugin_info) {
+    public function dynamicInit(array $plugin_info) 
+    {
 
         if ($this->should_stop_execution()) {
             return;
@@ -225,7 +227,7 @@ class Analytics
      * 
      * @return nothing
      */
-    private function register_constructor_hooks() 
+    private function _registerConstructorHooks() 
     {
 
         if (is_admin()) {
@@ -245,7 +247,7 @@ class Analytics
      *
      * @return bool
      */
-    function is_user_admin() 
+    function isUserAdmin() 
     {
 
         return ($this->is_plugin() && current_user_can(is_multisite() ? 'manage_options' : 'activate_plugins'))
@@ -260,7 +262,7 @@ class Analytics
      *
      * @return bool
      */
-    public function is_theme() 
+    public function isTheme() 
     {
         return (! $this->is_plugin());
     }
@@ -273,7 +275,7 @@ class Analytics
      *
      * @return string Plugin slug.
      */
-    public function get_slug() 
+    public function getSlug() 
     {
 
         return $this->_slug;
@@ -287,7 +289,7 @@ class Analytics
      *
      * @return bool
      */
-    private function should_stop_execution() 
+    private function _shouldStopExecution() 
     {
 
         if ($this->is_activation_mode()) {
@@ -302,8 +304,7 @@ class Analytics
                 return true;
             }
 
-            if (self::is_ajax()
-) {
+            if (self::is_ajax()) {
                 /**
                  * During activation, if running in AJAX mode, unless there's a sticky
                  * connectivity issue notice, don't run Analytics.
@@ -328,7 +329,7 @@ class Analytics
      *
      * @return bool
      */
-    public function is_activation_mode($and_on = true) 
+    public function isActivationMode($and_on = true) 
     {
         return true;
     }
@@ -341,7 +342,7 @@ class Analytics
      *
      * @return bool
      */
-    public function is_user_in_admin() 
+    public function isUserInAdmin() 
     {
         return is_admin();
     }
@@ -355,7 +356,7 @@ class Analytics
      *
      * @return bool
      */
-    private function get_option(&$options, $key, $default = false) 
+    private function _getOption(&$options, $key, $default = false) 
     {
         return ! empty($options[ $key ]) ? $options[ $key ] : $default;
     }
@@ -364,11 +365,12 @@ class Analytics
      * Get Boolean Option.
      *
      * @param array  $options Options.
-     * @param string $key Key.
+     * @param string $key     Key.
      * @param bool   $default Default.
+     * 
      * @return bool|mixed
      */
-    private function get_bool_option(&$options, $key, $default = false) 
+    private function _getBoolOption(&$options, $key, $default = false) 
     {
         return isset($options[ $key ]) && is_bool($options[ $key ]) ? $options[ $key ] : $default;
     }
@@ -381,7 +383,7 @@ class Analytics
      * @since  1.0.0
      * @return nothing
      */
-    public function _add_deactivation_feedback_dialog_box() 
+    public function addDeactivationFeedbackDialogBox() 
     {
 
         $show_deactivation_feedback_form = true;
@@ -421,7 +423,7 @@ class Analytics
      *
      * @return array The uninstall reasons for the specified user type.
      */
-    public function _get_uninstall_reasons($user_type = 'long-term') 
+    public function getUninstallReasons($user_type = 'long-term') 
     {
 
         $params                = array();
@@ -457,7 +459,7 @@ class Analytics
      * 
      * @return array
      */
-    public function get_default_uninstall_reasons($params = array()) 
+    public function getDefaultUninstallReasons($params = array()) 
     {
         $module_type = $params['module_type'];
 
@@ -513,7 +515,7 @@ class Analytics
      *
      * @return bool
      */
-    public function is_plugin() 
+    public function isPlugin() 
     {
         return (WP_STAT__MODULE_TYPE_PLUGIN === $this->_module_type);
     }
@@ -526,7 +528,7 @@ class Analytics
      * 
      * @return nothing
      */
-    public function _hook_action_links_and_register_account_hooks() 
+    public function hookActionLinksAndRegisterAccountHooks() 
     {
         if (self::is_plugins_page() && $this->is_plugin()) {
             $this->hook_plugin_action_links();
@@ -543,7 +545,7 @@ class Analytics
      * 
      * @return nothing
      */
-    private function hook_plugin_action_links() 
+    private function _hookPluginActionLinks() 
     {
 
         // Add action link to settings page.
@@ -576,7 +578,7 @@ class Analytics
      *
      * @return array
      */
-    function _modify_plugin_action_links_hook($links, $file) 
+    function _modifyPluginActionLinksHook($links, $file) 
     {
 
         $passed_deactivate = false;
@@ -620,7 +622,7 @@ class Analytics
      * 
      * @return nothing
      */
-    private function _register_account_hooks() 
+    private function _registerAccountHooks() 
     {
         if (! is_admin()) {
             return;
@@ -644,7 +646,8 @@ class Analytics
      * 
      * @return nothing
      */
-    public function _ask_for_review_dismiss() {
+    public function askForReviewDismiss() 
+    {
         check_ajax_referer('ask_for_review', 'security');
         if (! current_user_can('manage_options')) {
             wp_die(-1);
@@ -661,7 +664,7 @@ class Analytics
      * 
      * @return nothing
      */
-    public function _ask_for_usage_dismiss() 
+    public function askForUsageDismiss() 
     {
         check_ajax_referer('ask_for_usage', 'security');
         if (! current_user_can('manage_options')) {
@@ -675,7 +678,12 @@ class Analytics
         wp_send_json_success();
     }
 
-    public function _ask_for_usage_optin() 
+    /**
+     * Description
+     * 
+     * @return nothing
+     */
+    public function askForUsageOptin() 
     {
         check_ajax_referer('ask_for_usage', 'security');
         if (! current_user_can('manage_options')) {
@@ -694,7 +702,7 @@ class Analytics
      * 
      * @return nothing
      */
-    public function _ask_for_review_notice() 
+    public function askForReviewNotice() 
     {
         if (false === get_option($this->_slug . '-setup')) {
             update_option($this->_slug . '-setup', true);
@@ -716,8 +724,10 @@ class Analytics
 
     /**
      * Notice to be displayed for Review.
+     * 
+     * @return nothing
      */
-    public function _ask_for_usage_notice() 
+    public function askForUsageNotice() 
     {
         if (false === get_option($this->_slug . '-usage-setup')) {
             update_option($this->_slug . '-usage-setup', true);
@@ -745,7 +755,7 @@ class Analytics
      * 
      * @return nothing
      */
-    public function _submit_uninstall_reason_action() 
+    public function submitUninstallReasonAction() 
     {
 
         check_ajax_referer('uninstall_reason', 'security');
@@ -790,7 +800,7 @@ class Analytics
      * 
      * @return nothing
      */
-    public function _uninstall_plugin_event($check_user = true, $reason = array()) 
+    public function uninstallPluginEvent($check_user = true, $reason = array()) 
     {
 
         if ($check_user && ! current_user_can('activate_plugins')) {
@@ -823,8 +833,7 @@ class Analytics
         $request = array(
             'method'  => 'POST',
             'body'    => $params,
-            'timeout' => 30,
-);
+            'timeout' => 30,);
 
         // Send anonymous uninstall event only if user submitted a feedback.
         if (isset($reason)) {
@@ -842,7 +851,7 @@ class Analytics
      *
      * @return string
      */
-    public static function get_current_page() 
+    public static function getCurrentPage() 
     {
         if (! isset(self::$_pagenow)) {
             global $pagenow;
@@ -904,7 +913,7 @@ class Analytics
      *
      * @link http://wordpress.stackexchange.com/questions/70676/how-to-check-if-i-am-in-admin-ajax
      */
-    public static function is_ajax() 
+    public static function isAjax() 
     {
         return (defined('DOING_AJAX') && DOING_AJAX);
     }
@@ -917,7 +926,7 @@ class Analytics
      *
      * @return bool
      */
-    public static function is_themes_page() 
+    public static function isThemesPage() 
     {
         return ('themes.php' === self::get_current_page());
     }
@@ -930,7 +939,7 @@ class Analytics
      *
      * @return bool
      */
-    static function is_plugins_page() 
+    static function isPluginsPage() 
     {
         return ('plugins.php' === self::get_current_page());
     }

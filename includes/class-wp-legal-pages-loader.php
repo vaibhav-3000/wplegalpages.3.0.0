@@ -87,7 +87,7 @@ if (! class_exists('WP_Legal_Pages_Loader')) {
          * @since  1.5.2
          * @return nothing
          */
-        public function add_action($hook, $component, $callback, $priority = 10, $accepted_args = 1) 
+        public function addAction($hook, $component, $callback, $priority = 10, $accepted_args = 1) 
         {
             $this->actions = $this->add($this->actions, $hook, $component, $callback, $priority, $accepted_args);
         }
@@ -104,9 +104,9 @@ if (! class_exists('WP_Legal_Pages_Loader')) {
          * @since  1.5.2
          * @return nothing
          */
-        public function add_filter($hook, $component, $callback, $priority = 10, $accepted_args = 1) 
+        public function addFilter($hook, $component, $callback, $priority = 10, $accepted_args = 1) 
         {
-            $this->filters = $this->add($this->filters, $hook, $component, $callback, $priority, $accepted_args);
+            $this->filters = $this->_add($this->filters, $hook, $component, $callback, $priority, $accepted_args);
         }
 
         /**
@@ -124,7 +124,7 @@ if (! class_exists('WP_Legal_Pages_Loader')) {
          * @access private 
          * @return array   The collection of actions and filters registered with WordPress.
          */
-        private function add($hooks, $hook, $component, $callback, $priority, $accepted_args) 
+        private function _add($hooks, $hook, $component, $callback, $priority, $accepted_args) 
         {
 
             $hooks[] = array(
@@ -152,7 +152,7 @@ if (! class_exists('WP_Legal_Pages_Loader')) {
             }
 
             foreach ($this->actions as $hook) {
-                add_action($hook['hook'], array($hook['component'], $hook['callback']), $hook['priority'], $hook['accepted_args']);
+                addAction($hook['hook'], array($hook['component'], $hook['callback']), $hook['priority'], $hook['accepted_args']);
             }
 
         }

@@ -29,7 +29,7 @@ if (! defined('ABSPATH')) {
 class Analytics_Tracking
 {
 
-    private $slug;
+    private $_slug;
 
     /**
      * The tracking option name.
@@ -64,19 +64,29 @@ class Analytics_Tracking
      *
      * @var int
      */
-    private $current_time;
+    private $_current_time;
 
+    /**
+     * Constructor.
+     *
+     * @param $slug slug
+     */
     public function __construct($slug) 
     {
-        $this->slug = $slug;
+        $this->_slug = $slug;
         if (! $this->analytics_tracking_enabled()) {
             return;
         }
-        $this->current_time = time();
+        $this->_current_time = time();
         $this->analytics_tracking_register_hooks();
     }
 
-    public function analytics_tracking_register_hooks() 
+    /**
+     * Description.
+     *
+     * @return nothing
+     */
+    public function analyticsTrackingRegisterHooks() 
     {
         if (! $this->analytics_tracking_enabled()) {
             return;
@@ -94,7 +104,7 @@ class Analytics_Tracking
      *
      * @return array
      */
-    public function analytics_tracking_send_clicks() 
+    public function analyticsTrackingSendClicks() 
     {
         if (! current_user_can('manage_options') || ! $this->analytics_tracking_enabled()) {
             wp_die(-1);
@@ -108,7 +118,7 @@ class Analytics_Tracking
                         $args     = array(
                             'method' => 'POST',
                             'body'   => array(
-                                'product_name' => $this->slug,
+                                'product_name' => $this->_slug,
                                 'event'        => $event,
                                 'default'      => $this->analytics_tracking_get_default_data(),),);
                         $response = wp_remote_post($this->tracking_endpoint, $args);
@@ -130,7 +140,7 @@ class Analytics_Tracking
      *
      * @return void
      */
-    public function analytics_tracking_schedule_data_sending($upgrader = false, $data = array()) 
+    public function analyticsTrackingScheduleDataSending($upgrader = false, $data = array()) 
     {
         // Return if it's not a WordPress core update.
         if (! $upgrader || ! isset($data['type']) || $data['type'] !== 'core') {
@@ -162,7 +172,7 @@ class Analytics_Tracking
      * 
      * @return bool
      */
-    public function analytics_tracking_send($force = false) 
+    public function analyticsTrackingSend($force = false) 
     {
         if (! $this->analytics_tracking_enabled()) {
             return;
@@ -175,7 +185,7 @@ class Analytics_Tracking
         $args = array(
             'method' => 'POST',
             'body'   => array(
-                'product_name' => $this->slug,
+                'product_name' => $this->_slug,
                 'default'      => $this->analytics_tracking_get_default_data(),
                 'server'       => $this->analytics_tracking_get_server_data(),
                 'plugins'      => $this->analytics_tracking_get_plugins_data(),
@@ -184,11 +194,16 @@ class Analytics_Tracking
         $response = wp_remote_post($this->endpoint, $args);
 
         if (! is_wp_error($response)) {
-            update_option($this->slug . '-' . $this->option_name, $this->current_time, 'yes');
+            update_option($this->_slug . '-' . $this->option_name, $this->_current_time, 'yes');
         }
     }
 
-    public function analytics_tracking_get_default_data() 
+    /**
+     * Description.
+     * 
+     * @return json_encode($data)
+     */
+    public function analyticsTrackingGetDefaultData() 
     {
         $data = array(
             'timestamp'     => (int) date('Uv'),
@@ -199,7 +214,12 @@ class Analytics_Tracking
         return json_encode($data);
     }
 
-    public function analytics_tracking_get_server_data() 
+    /**
+     * Description.
+     * 
+     * @return json_encode($data)
+     */
+    public function analyticsTrackingGetServerData() 
     {
         $data = array();
 
@@ -211,7 +231,12 @@ class Analytics_Tracking
         return json_encode($data);
     }
 
-    public function analytics_tracking_get_plugins_data() 
+    /**
+     * Description.
+     * 
+     * @return json_encode($data)
+     */
+    public function analyticsTrackingGetPluginsData() 
     {
         $data = array();
 
@@ -231,7 +256,12 @@ class Analytics_Tracking
         return json_encode($data);
     }
 
-    public function analytics_tracking_get_themes_data() 
+    /**
+     * Description.
+     * 
+     * @return json_encode($data)
+     */
+    public function analyticsTrackingGetThemesData() 
     {
         $theme = wp_get_theme();
 
@@ -252,7 +282,7 @@ class Analytics_Tracking
      *
      * @return string The version.
      */
-    protected function analytics_tracking_get_wordpress_version() 
+    protected function analyticsTrackingGetWordpressVersion() 
     {
         global $wp_version;
 
@@ -264,7 +294,7 @@ class Analytics_Tracking
      *
      * @return array|null The curl info. Or null when curl isn't available..
      */
-    protected function analytics_tracking_get_curl_info() 
+    protected function analyticsTrackingGetCurlInfo() 
     {
         if (! function_exists('curl_version')) {
             return null;
@@ -288,7 +318,7 @@ class Analytics_Tracking
      *
      * @return array Returns the state of the php extensions.
      */
-    protected function analytics_tracking_get_php_extensions() 
+    protected function analyticsTrackingGetPhpExtensions() 
     {
         return array(
             'imagick'   => extension_loaded('imagick'),
@@ -306,7 +336,7 @@ class Analytics_Tracking
      *
      * @return array The formatted array.
      */
-    protected function analytics_tracking_format_plugin(array $plugin) 
+    protected function analyticsTrackingFormatPlugin(array $plugin) 
     {
         return array(
             'name'    => $plugin['Name'],
@@ -320,7 +350,7 @@ class Analytics_Tracking
      *
      * @return null|string The name of the parent theme or null.
      */
-    private function analytics_tracking_get_parent_theme(WP_Theme $theme) 
+    private function _analyticsTrackingGetParentTheme(WP_Theme $theme) 
     {
         if (is_child_theme()) {
             return $theme->get('Template');
@@ -340,7 +370,7 @@ class Analytics_Tracking
      *
      * @return bool True when tracking data should be sent.
      */
-    protected function analytics_tracking_should_send_data($ignore_time_treshhold = false) 
+    protected function analyticsTrackingShouldSendData($ignore_time_treshhold = false) 
     {
         global $pagenow;
 
@@ -354,14 +384,14 @@ class Analytics_Tracking
             return false;
         }
 
-        $last_time = get_option($this->slug . '-' . $this->option_name);
+        $last_time = get_option($this->_slug . '-' . $this->option_name);
 
         // When tracking data haven't been sent yet or when sending data is forced.
         if (! $last_time || $ignore_time_treshhold) {
             return true;
         }
 
-        return $this->analytics_tracking_exceeds_treshhold($this->current_time - $last_time);
+        return $this->analytics_tracking_exceeds_treshhold($this->_current_time - $last_time);
     }
 
     /**
@@ -371,7 +401,7 @@ class Analytics_Tracking
      *
      * @return bool True when seconds is bigger than threshold.
      */
-    protected function analytics_tracking_exceeds_treshhold($seconds) 
+    protected function analyticsTrackingExceedsTreshhold($seconds) 
     {
         return ($seconds > $this->threshold);
     }
@@ -381,10 +411,10 @@ class Analytics_Tracking
      *
      * @return bool True when we can track, false when we can't.
      */
-    private function analytics_tracking_enabled() 
+    private function _analyticsTrackingEnabled() 
     {
         // Check if we're allowing tracking.
-        $tracking = get_option($this->slug . '-ask-for-usage-optin');
+        $tracking = get_option($this->_slug . '-ask-for-usage-optin');
 
         if ($tracking === false) {
             return false;
@@ -393,7 +423,7 @@ class Analytics_Tracking
         // Save this state.
         if ($tracking === null) {
             $tracking = apply_filters('analytics_tracking_enable', false);
-            update_option($this->slug . '-ask-for-usage-optin', $tracking);
+            update_option($this->_slug . '-ask-for-usage-optin', $tracking);
         }
 
         if ($tracking === false) {

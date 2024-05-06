@@ -29,7 +29,7 @@ if (!class_exists('Analytics')) {
      *
      * @return Analytics
      */
-    function ras_dynamic_init( $module ) 
+    function rasDynamicInit( $module ) 
     {
         if (!isset($module['plugin_basename'])) {
             $plugin_basename = '';

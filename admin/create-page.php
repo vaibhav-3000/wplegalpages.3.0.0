@@ -262,7 +262,7 @@ if ($countof_pages[0]->cntPages < $max_limit) {
                             </span>
                         </a>
                     </span>
-                </li>			
+            </li>			
                             <?php
                     endif;
                     $refund_start = true;

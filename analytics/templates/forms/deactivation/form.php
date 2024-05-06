@@ -71,7 +71,7 @@ HTML;
         $anonymous_feedback_checkbox_html = sprintf(
             '<label class="anonymous-feedback-label"><input type="checkbox" class="anonymous-feedback-checkbox"> %s</label>',
             __('Send contact details for help', 'analytics')
-);
+        );
     }
 }
 

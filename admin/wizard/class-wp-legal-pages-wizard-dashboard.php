@@ -289,7 +289,7 @@ if (! class_exists('WP_Legal_Pages_Wizard_Dashboard')) {
          *
          * @return array $legal_pages legal pages.
          */
-        public function get_legal_pages() 
+        public function getLegalPages() 
         {
             return $this->legal_pages;
         }
@@ -299,7 +299,7 @@ if (! class_exists('WP_Legal_Pages_Wizard_Dashboard')) {
          *
          * @return array $pro_legalpages legal pages.
          */
-        public function get_pro_legal_pages() 
+        public function getProLegalPages() 
         {
             return $this->pro_legalpages;
         }

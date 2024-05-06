@@ -214,9 +214,9 @@ class WP_Widget_Legal_Pages extends WP_Widget
  * 
  * @return nothing
  */
-function wplegalpages_load_widget() 
+function wplegalpagesLoadWidget() 
 {
     register_widget('WP_Widget_Legal_Pages');
 }
 
-add_action('widgets_init', 'wplegalpages_load_widget');
+add_action('widgets_init', 'wplegalpagesLoadWidget');

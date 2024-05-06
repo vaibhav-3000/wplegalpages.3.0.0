@@ -27,7 +27,7 @@ if (! function_exists('as_get_template_path')) {
      * 
      * @return string
      */
-    function as_get_template_path($path) 
+    function asGetTemplatePath($path) 
     {
         return WP_STAT__DIR_TEMPLATES . '/' . trim($path, '/');
     }
@@ -40,7 +40,7 @@ if (! function_exists('as_get_template_path')) {
      * 
      * @return nothing
      */
-    function as_include_template($path, &$params = null) 
+    function asIncludeTemplate($path, &$params = null) 
     {
         $VARS = &$params;
         include as_get_template_path($path);
@@ -54,7 +54,7 @@ if (! function_exists('as_get_template_path')) {
      * 
      * @return nothing
      */
-    function as_include_once_template($path, &$params = null) 
+    function asIncludeOnceTemplate($path, &$params = null) 
     {
         $VARS = &$params;
         include_once as_get_template_path($path);
@@ -68,7 +68,7 @@ if (! function_exists('as_get_template_path')) {
      * 
      * @return nothing
      */
-    function as_require_template($path, &$params = null) 
+    function asRequireTemplate($path, &$params = null) 
     {
         $VARS = &$params;
         include as_get_template_path($path);
@@ -82,7 +82,7 @@ if (! function_exists('as_get_template_path')) {
      * 
      * @return nothing
      */
-    function as_require_once_template($path, &$params = null) 
+    function asRequireOnceTemplate($path, &$params = null) 
     {
         $VARS = &$params;
         include_once as_get_template_path($path);
@@ -96,7 +96,7 @@ if (! function_exists('as_get_template_path')) {
      * 
      * @return string
      */
-    function as_get_template($path, &$params = null) 
+    function asGetTemplate($path, &$params = null) 
     {
         ob_start();
 
@@ -119,7 +119,7 @@ if (! function_exists('as_request_get')) {
      * 
      * @return mixed
      */
-    function as_request_get($key, $def = false, $type = false) 
+    function asRequestGet($key, $def = false, $type = false) 
     {
         if (is_string($type)) {
             $type = strtolower($type);
@@ -155,7 +155,7 @@ if (! function_exists('as_request_get_bool')) {
      *
      * @return bool|mixed
      */
-    function as_request_get_bool($key, $def = false) 
+    function asRequestGetBool($key, $def = false) 
     {
         $val = as_request_get($key, null);
 
@@ -193,7 +193,7 @@ if (! function_exists('as_get_raw_referer')) {
      *
      * @return string|false Referer URL on success, false on failure.
      */
-    function as_get_raw_referer() 
+    function asGetRawReferer() 
     {
         if (function_exists('wp_get_raw_referer')) {
             return wp_get_raw_referer();
@@ -220,7 +220,7 @@ if (! function_exists('as_asset_url')) {
      *
      * @return string Asset's URL.
      */
-    function as_asset_url($asset_abs_path) 
+    function asAssetUrl($asset_abs_path) 
     {
         $wp_content_dir = as_normalize_path(WP_CONTENT_DIR);
         $asset_abs_path = as_normalize_path($asset_abs_path);
@@ -260,7 +260,7 @@ if (! function_exists('as_enqueue_local_style')) {
      * 
      * @return nothing
      */
-    function as_enqueue_local_style($handle, $path, $deps = array(), $ver = false, $media = 'all') 
+    function asEnqueueLocalStyle($handle, $path, $deps = array(), $ver = false, $media = 'all') 
     {
         wp_enqueue_style($handle, as_asset_url(WP_STAT__DIR_CSS . '/' . trim($path, '/')), $deps, '1.2.2', $media);
     }
@@ -280,7 +280,7 @@ if (! function_exists('_as_text_inline')) {
      *
      * @global $fs_text_overrides
      */
-    function _as_text_inline($text, $key = '', $slug = 'analytics') 
+    function _asTextInline($text, $key = '', $slug = 'analytics') 
     {
         list($text, $text_domain) = as_text_and_domain($text, $key, $slug);
 
@@ -303,7 +303,7 @@ if (! function_exists('as_text_and_domain')) {
      * @since  1.0.1
      * @return string[]
      */
-    function as_text_and_domain($text, $key, $slug) 
+    function asTextAndDomain($text, $key, $slug) 
     {
         $override = as_text_override($text, $key, $slug);
 
@@ -332,7 +332,7 @@ if (! function_exists('as_text_override')) {
      * @since  1.0.1
      * @return string|false
      */
-    function as_text_override($text, $key, $slug) 
+    function asTextOverride($text, $key, $slug) 
     {
         global $as_text_overrides;
 
@@ -359,9 +359,21 @@ if (! function_exists('as_text_override')) {
         return false;
     }
 }
-
 if (! function_exists('as_enqueue_local_script')) {
-    function as_enqueue_local_script($handle, $path, $deps = array(), $ver = false, $in_footer = 'all')
+    /**
+     * Get a translatable text override if exists, or `false`.
+     *
+     * @param string $handle    handle
+     * @param string $path      path
+     * @param array  $deps      deps
+     * @param bool   $ver       ver
+     * @param string $in_footer in footer
+     * 
+     * @author CyberChimps
+     * @since  1.0.1
+     * @return string|false
+     */
+    function asEnqueueLocalScript($handle, $path, $deps = array(), $ver = false, $in_footer = 'all')
     {
         wp_enqueue_script($handle, as_asset_url(WP_STAT__DIR_JS . '/' . trim($path, '/')), $deps, $ver, $in_footer);
     }
@@ -381,7 +393,7 @@ if (! function_exists('as_text_inline')) {
      *
      * @global $fs_text_overrides
      */
-    function as_text_inline($text, $key = '', $slug = 'analytics') 
+    function asTextInline($text, $key = '', $slug = 'analytics') 
     {
         return _as_text_inline($text, $key, $slug);
     }
@@ -402,7 +414,7 @@ if (! function_exists('as_text_inline')) {
  *
  * @global $fs_text_overrides
  */
-function _as_text_x_inline($text, $context, $key = '', $slug = 'analytics') 
+function _asTextXInline($text, $context, $key = '', $slug = 'analytics') 
 {
     list($text, $text_domain) = as_text_and_domain($text, $key, $slug);
 
@@ -426,7 +438,7 @@ function _as_text_x_inline($text, $context, $key = '', $slug = 'analytics')
  *
  * @global $fs_text_overrides
  */
-function as_text_x_inline($text, $context, $key = '', $slug = 'analytics') 
+function asTextXInline($text, $context, $key = '', $slug = 'analytics') 
 {
     return _as_text_x_inline($text, $context, $key, $slug);
 }
@@ -445,7 +457,7 @@ if (! function_exists('as_esc_html_echo_x_inline')) {
      * 
      * @return nothing
      */
-    function as_esc_html_echo_x_inline($text, $context, $key = '', $slug = 'analytics') 
+    function asEscHtmlEchoXInline($text, $context, $key = '', $slug = 'analytics') 
     {
         echo esc_html(_as_text_x_inline($text, $context, $key, $slug));
     }
@@ -463,7 +475,7 @@ if (! function_exists('as_sort_by_priority')) {
      * 
      * @return int
      */
-    function as_sort_by_priority($a, $b) 
+    function asSortByPriority($a, $b) 
     {
 
         // If b has a priority and a does not, b wins.
@@ -492,7 +504,7 @@ if (! function_exists('as_esc_html_echo_inline')) {
      * 
      * @return nothing
      */
-    function as_esc_html_echo_inline($text, $key = '', $slug = 'analytics') 
+    function asEscHtmlEchoInline($text, $key = '', $slug = 'analytics') 
     {
         echo esc_html(_as_text_inline($text, $key, $slug));
     }
@@ -510,7 +522,7 @@ if (! function_exists('as_esc_html_echo_inline')) {
  * 
  * @return nothing
  */
-function as_echo_inline($text, $key = '', $slug = 'analytics') 
+function asEchoInline($text, $key = '', $slug = 'analytics') 
 {
     echo _as_text_inline($text, $key, $slug);
 }
@@ -530,7 +542,7 @@ if (! function_exists('as_apply_filter')) {
      *
      * @uses apply_filters()
      */
-    function as_apply_filter($module_unique_affix, $tag, $value) 
+    function asApplyFilter($module_unique_affix, $tag, $value) 
     {
         $args = func_get_args();
 
