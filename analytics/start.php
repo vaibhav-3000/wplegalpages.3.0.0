@@ -2,9 +2,12 @@
 /**
  * Invoke the SDK.
  *
+ * @category  X
  * @package   Analytics
- * @copyright Copyright (c) 2019, CyberChimps, Inc.
+ * @author    Display Name <username@example.com>
+ * @copyright 2019    CyberChimps, Inc.
  * @license   https://www.gnu.org/licenses/gpl-3.0.html GNU General Public License Version 3
+ * @link      https://wplegalpages.com/
  * @since     1.0.0
  */
 
@@ -48,11 +51,13 @@ if (!class_exists('Analytics')) {
      * Quick shortcut to get Analytics for specified plugin.
      * Used by various templates.
      *
-     * @param number $module_id Module Id.
-     * @param string $slug Slug.
+     * @param number $module_id    Module Id.
      * @param string $product_name Product Name.
-     * @param string $version Product Version.
-     * @param string $module_type Module type.
+     * @param string $version      Product Version.
+     * @param string $module_type  Module type.
+     * @param string $slug         Slug.
+     * 
+     * @return Analytics
      */
     function analytics( $module_id, $product_name, $version, $module_type, $slug ) 
     {
