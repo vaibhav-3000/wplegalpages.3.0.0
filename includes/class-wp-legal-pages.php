@@ -352,7 +352,8 @@ if (! class_exists('WP_Legal_Pages')) {
         /**
          * Enqueues editor specific javascript files.
          *
-         * @since 7.0
+         * @since  7.0
+         * @return nothing
          */
         public function wplegalpages_pro_enqueue_editor() 
         {

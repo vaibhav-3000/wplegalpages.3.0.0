@@ -4,8 +4,14 @@
  *
  * This file is used to markup the admin-facing aspects of the plugin.
  *
+ * @category   X
  * @package    Wplegalpages_Pro
  * @subpackage Wplegalpages_Pro/admin
+ * @author     Display Name <username@example.com>
+ * @copyright  2019    CyberChimps, Inc.
+ * @license    https://www.gnu.org/licenses/gpl-3.0.html GNU General Public License Version 3
+ * @link       https://wplegalpages.com/
+ * @since      1.0.0
  */
 
 if (! defined('ABSPATH')) {

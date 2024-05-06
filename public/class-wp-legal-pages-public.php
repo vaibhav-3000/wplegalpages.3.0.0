@@ -2,11 +2,14 @@
 /**
  * The public-facing functionality of the plugin.
  *
- * @link       http://wplegalpages.com/
+ * @category   X
+ * @package    Wplegalpages_Pro
+ * @subpackage Wplegalpages_Pro/admin
+ * @author     Display Name <username@example.com>
+ * @copyright  2019    CyberChimps, Inc.
+ * @license    https://www.gnu.org/licenses/gpl-3.0.html GNU General Public License Version 3
+ * @link       https://wplegalpages.com/
  * @since      1.5.2
- *
- * @package    WP_Legal_Pages
- * @subpackage WP_Legal_Pages/admin
  */
 
 /**
@@ -36,9 +39,9 @@ if (! class_exists('WP_Legal_Pages_Public')) {
         /**
          * The ID of this plugin.
          *
-         * @since    1.0.0
-         * @access   private
-         * @var      string    $plugin_name    The ID of this plugin.
+         * @since  1.0.0
+         * @access private
+         * @var    string    $plugin_name    The ID of this plugin.
          */
 
         private $plugin_name;
@@ -46,18 +49,19 @@ if (! class_exists('WP_Legal_Pages_Public')) {
         /**
          * The version of this plugin.
          *
-         * @since    1.0.0
-         * @access   private
-         * @var      string    $version    The current version of this plugin.
+         * @since  1.0.0
+         * @access private
+         * @var    string    $version    The current version of this plugin.
          */
         private $version;
 
         /**
          * Initialize the class and set its properties.
          *
-         * @since    1.0.0
-         * @param      string $plugin_name       The name of the plugin.
-         * @param      string $version    The version of this plugin.
+         * @param string $plugin_name The name of the plugin.
+         * @param string $version     The version of this plugin.
+         * 
+         * @since 1.0.0
          */
         public function __construct($plugin_name, $version) 
         {
@@ -99,7 +103,8 @@ if (! class_exists('WP_Legal_Pages_Public')) {
         /**
          * Register the stylesheets for the public-facing side of the site.
          *
-         * @since    1.0.0
+         * @since  1.0.0
+         * @return nothing
          */
         public function enqueue_styles() 
         {
@@ -122,7 +127,8 @@ if (! class_exists('WP_Legal_Pages_Public')) {
         /**
          * Register the JavaScript for the public-facing side of the site.
          *
-         * @since    1.0.0
+         * @since  1.0.0
+         * @return nothing
          */
         public function enqueue_scripts() 
         {
@@ -162,7 +168,8 @@ if (! class_exists('WP_Legal_Pages_Public')) {
         /**
          * Enqueues Legal Pages Adult scripts.
          *
-         * @since 7.0
+         * @since  7.0
+         * @return nothing
          */
         public function wplegalpages_pro_adult_scripts() 
         {
@@ -172,7 +179,8 @@ if (! class_exists('WP_Legal_Pages_Public')) {
         /**
          * Renders Legal Pages Adult popup.
          *
-         * @since 7.0
+         * @since  7.0
+         * @return nothing
          */
         public function wplegalpages_pro_adult_popup() 
         {
@@ -195,7 +203,8 @@ if (! class_exists('WP_Legal_Pages_Public')) {
         /**
          * Renders Legal Pages overlay popup.
          *
-         * @since 7.0
+         * @since  7.0
+         * @return nothing
          */
         public function wplegalpages_pro_verify_overlay() 
         {
@@ -256,7 +265,8 @@ if (! class_exists('WP_Legal_Pages_Public')) {
         /**
          * Verifies user.
          *
-         * @since 7.0
+         * @since  7.0
+         * @return nothing
          */
         public function wplegalpages_pro_verify() 
         {
@@ -330,7 +340,8 @@ if (! class_exists('WP_Legal_Pages_Public')) {
         /**
          * Verify user form.
          *
-         * @since 7.0
+         * @since  7.0
+         * @return nothing
          */
         public function wplegalpages_pro_register_form() 
         {
@@ -468,9 +479,9 @@ if (! class_exists('WP_Legal_Pages_Public')) {
         /**
          * Get visitor age.
          *
-         * @param int $year Year.
+         * @param int $year  Year.
          * @param int $month Month.
-         * @param int $day Day.
+         * @param int $day   Day.
          *
          * @return int
          *
@@ -517,7 +528,8 @@ if (! class_exists('WP_Legal_Pages_Public')) {
          *
          * @param Array $atts Shortcode attributes.
          *
-         * @since 7.0
+         * @since  7.0
+         * @return nothing
          */
         public function wplegalpages_pro_popup_shortcode($atts) 
         {
@@ -632,7 +644,8 @@ if (! class_exists('WP_Legal_Pages_Public')) {
         /**
          * Disables comments for Legal Pages.
          *
-         * @since 7.0
+         * @since  7.0
+         * @return nothing
          */
         public function wplegalpages_pro_disable_comments() 
         {
@@ -668,6 +681,7 @@ if (! class_exists('WP_Legal_Pages_Public')) {
          * Show credits.
          *
          * @param String $content Content.
+         * 
          * @return string
          */
         public function wplegal_post_generate($content) 
@@ -687,6 +701,8 @@ if (! class_exists('WP_Legal_Pages_Public')) {
          * Shortcode callback function for All Legal Pages shortcode.
          *
          * @param Array $atts shortcode attributes.
+         * 
+         * @return $content
          */
         public function wplegalpages_page_shortcode($atts) 
         {
@@ -717,6 +733,8 @@ if (! class_exists('WP_Legal_Pages_Public')) {
 
         /**
          * Function to display message in footer
+         * 
+         * @return nothing
          */
         public function wp_legalpages_show_footer_message() 
         {
@@ -785,7 +803,10 @@ if (! class_exists('WP_Legal_Pages_Public')) {
             <?php
         }
 
-        /** Show Announcement bar contents
+        /** 
+         * Show Announcement bar contents
+         * 
+         * @return nothing
          */
         public function wplegal_announce_bar_content() 
         {
@@ -817,6 +838,8 @@ if (! class_exists('WP_Legal_Pages_Public')) {
 
         /**
          * Function to display announcement banner content
+         * 
+         * @return nothing
          */
         public function lp_banner_contents_display() 
         {
@@ -963,6 +986,8 @@ if (! class_exists('WP_Legal_Pages_Public')) {
 
         /**
          * Display EU cookie message on frontend.
+         * 
+         * @return nothing
          */
         public function wp_legalpages_show_eu_cookie_message() 
         {
@@ -1002,8 +1027,7 @@ if (! class_exists('WP_Legal_Pages_Public')) {
                     'lp_eu_link_url'          => $lp_eu_link_url,
                     'lp_eu_text_size'         => $lp_eu_text_size,
                     'lp_eu_link_color'        => $lp_eu_link_color,
-                    'lp_eu_head_text_size'    => $lp_eu_head_text_size,
-);
+                    'lp_eu_head_text_size'    => $lp_eu_head_text_size,);
                 wp_enqueue_style($this->plugin_name . '-public');
                 wp_localize_script($this->plugin_name . 'lp-eu-cookie', 'obj', $options);
                 wp_enqueue_script($this->plugin_name . 'lp-eu-cookie');

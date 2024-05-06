@@ -4,8 +4,14 @@
  *
  * This file is used to markup the cookie feature.
  *
- *  @package    Wplegalpages
- *  @subpackage Wplegalpages/admin
+ * @category   X
+ * @package    Wplegalpages_Pro
+ * @subpackage Wplegalpages_Pro/admin
+ * @author     Display Name <username@example.com>
+ * @copyright  2019    CyberChimps, Inc.
+ * @license    https://www.gnu.org/licenses/gpl-3.0.html GNU General Public License Version 3
+ * @link       https://wplegalpages.com/
+ * @since      1.0.0
  */
 
 // If this file is called directly, abort.
