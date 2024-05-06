@@ -3,10 +3,13 @@
  * WPLegalPages Dashboard.
  *
  * This class defines all the pages on wizard dashboard.
- *
+ * 
+ * @category   X
  * @package    WP_Legal_Pages
  * @subpackage WP_Legal_Pages/admin/wizard
  * @author     WPEka <support@wplegalpages.com>
+ * @license    username@example.com X
+ * @link       https://wplegalpages.com/
  * @since      1.5.2
  */
 
@@ -17,11 +20,13 @@ if (! class_exists('WP_Legal_Pages_Wizard_Dashboard')) {
      *
      * This class defines all the pages on wizard dashboard.
      *
+     * @category   X
      * @package    WP_Legal_Pages
      * @subpackage WP_Legal_Pages/admin/wizard
      * @author     WPEka <support@wplegalpages.com>
+     * @license    username@example.com X
+     * @link       https://wplegalpages.com/
      * @since      1.5.2
-
      */
     class WP_Legal_Pages_Wizard_Dashboard 
     {

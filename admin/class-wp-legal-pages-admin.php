@@ -2,11 +2,13 @@
 /**
  * The Admin-specific functionality of the WPLegalPages.
  *
- * @package    WP_Legal_Pages
- * @subpackage WP_Legal_Pages/admin
+ * @category   X
+ * @package    Wplegalpages
+ * @subpackage Wplegalpages/admin
+ * @author     Display Name <username@example.com>
+ * @license    username@example.com X
  * @link       http://wplegalpages.com/
  * @since      1.5.2
- *
  */
 
 /**
@@ -26,9 +28,12 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
      * Defines the WPLegalPages name, version, and two examples hooks for how to
      * enqueue the admin-specific stylesheet and JavaScript.
      *
+     * @category   X
      * @package    WP_Legal_Pages
      * @subpackage WP_Legal_Pages/includes
      * @author     WPEka <support@wplegalpages.com>
+     * @license    username@example.com X
+     * @link       http://wplegalpages.com/
      */
     class WP_Legal_Pages_Admin 
     {
@@ -64,7 +69,6 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
          *
          * @param string $plugin_name The name of this WPLegalPages.
          * @param string $version     The version of this WPLegalPages.
-         * @since 1.0.0
          */
         public function __construct($plugin_name, $version) 
         {
@@ -82,8 +86,9 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
 
         /**
          * Register the stylesheets for the admin area.
-         *
-         * @since 1.0.0
+         * 
+         * @since  1.0.0
+         * @return nothing
          */
         public function enqueue_styles()
         {
@@ -97,7 +102,8 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
         /**
          * Register the JavaScript for the admin area.
          *
-         * @since 1.0.0
+         * @since  1.0.0
+         * @return nothing
          */
         public function enqueue_scripts() 
         {
@@ -131,6 +137,8 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
          * The WP_Legal_Pages_Loader will then create the relationship
          * between the defined hooks and the functions defined in this
          * class.
+         * 
+         * @return nothing
          */
         public function admin_menu() 
         {
@@ -151,7 +159,8 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
         /**
          * Admin init for database update.
          *
-         * @since 2.3.5
+         * @since  2.3.5
+         * @return nothing
          */
         public function wplegal_admin_init() 
         {
@@ -182,7 +191,8 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
         /**
          * Returns plugin action links.
          *
-         * @param  array $links Plugin action links.
+         * @param array $links Plugin action links.
+         * 
          * @return array
          */
         public function wplegal_plugin_action_links($links) 
@@ -200,6 +210,8 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
 
         /**
          * Update templates on admin init.
+         * 
+         * @return nothing
          */
         public function wplegal_admin_init_install_db() 
         {
@@ -842,7 +854,7 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
                         array(
                             '%s',
                             )
-                        ); // db call ok; no-cache ok.
+                    ); // db call ok; no-cache ok.
                     add_option('_lp_pro_digital_db_updated', true);
                 }
             }
@@ -1193,7 +1205,8 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
         /**
          * Registeres Affiliate disclosure metabox for posts.
          *
-         * @since 3.0.0
+         * @since  3.0.0
+         * @return nothing
          */
         public function wplegalpages_pro_register_meta_boxes() 
         {
@@ -1204,7 +1217,8 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
          *
          * @param int $post_id Post ID.
          *
-         * @since 3.0.0
+         * @since  3.0.0
+         * @return nothing
          */
         public function wplegalpages_pro_save_meta_box($post_id) 
         {
@@ -1221,7 +1235,8 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
          *
          * @param WP_Post $post Post.
          *
-         * @since 3.0.0
+         * @since  3.0.0
+         * @return nothing
          */
         public function wplegalpages_pro_display_callback($post) 
         {
@@ -1311,6 +1326,8 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
         }
         /**
          * Register affiliate disclosure block.
+         * 
+         * @return nothing
          */
         public function wplegalpages_pro_register_block_type() 
         {
@@ -1338,6 +1355,8 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
         }
         /**
          * Enqueue admin common style and scripts.
+         * 
+         * @return nothing
          */
         public function enqueue_common_style_scripts() 
         {
@@ -1349,7 +1368,8 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
         /**
          * Callback function for Dashboard page.
          *
-         * @since 2.10.0
+         * @since  2.10.0
+         * @return nothing
          */
         public function wp_legalpages_new_admin_screen() 
         {
@@ -1395,6 +1415,8 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
 
         /**
          * This Callback function for Admin Setting menu for WPLegalpages.
+         * 
+         * @return nothing
          */
         public function admin_setting() 
         {
@@ -1488,6 +1510,8 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
 
         /**
          * This Callback function for Show Page menu for WPLegalpages.
+         * 
+         * @return nothing
          */
         public function show_pages() 
         {
@@ -1501,6 +1525,8 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
 
         /**
          * This Callback function for Getting Started menu for WPLegalpages.
+         * 
+         * @return nothing
          */
         public function getting_started() 
         {
@@ -1512,6 +1538,8 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
 
         /**
          * This Callback function for Getting Started menu for WPLegalpages.
+         * 
+         * @return nothing
          */
         public function vue_getting_started() 
         {
@@ -1616,7 +1644,7 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
                             'description' => __('Find answers to some of the most commonly asked questions.', 'wplegalpages'),
                             'link'        => 'https://club.wpeka.com/docs/wp-legal-pages/',
                             'link_title'  => 'Find out >>',),),)
-                        );
+            );
 
             ?>
             <div id="gettingstartedapp"></div>
@@ -1627,6 +1655,8 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
 
         /**
          * Function to enqueue mascot files
+         * 
+         * @return nothing
          */
         public static function wplegalpages_mascot_enqueue() 
         {
@@ -1659,6 +1689,8 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
 
         /**
          * This Callback function for EU_Cookies Page menu for WPLegalpages.
+         * 
+         * @return nothing
          */
         public function update_eu_cookies() 
         {
@@ -1671,6 +1703,8 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
 
         /**
          * Accpet terms.
+         * 
+         * @return nothing
          */
         public function wplegal_accept_terms() 
         {
@@ -1686,6 +1720,8 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
 
         /**
          * Returns whether terms accepts or not.
+         * 
+         * @return wp_send_json($result)
          */
         public function wplegal_get_accept_terms() 
         {
@@ -1705,6 +1741,8 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
 
         /**
          * Accept terms.
+         * 
+         * @return wp_send_json($result)
          */
         public function wplegal_save_accept_terms() 
         {
@@ -1730,7 +1768,8 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
         /**
          * Add menu object to the theme menu screen.
          *
-         * @param  Object $object Menu object.
+         * @param Object $object Menu object.
+         * 
          * @return mixed
          */
         public function wplegalpages_add_menu_meta_box($object) 
@@ -1741,6 +1780,8 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
 
         /**
          * WPLegalPages hidden metaboxes
+         * 
+         * @return nothing
          */
         public function wplegalpages_hidden_meta_boxes() 
         {
@@ -1757,6 +1798,8 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
 
         /**
          * WPLegalPages Menu items on theme menu screen.
+         * 
+         * @return nothing
          */
         public function wplegalpages_menu_meta_box() 
         {
@@ -1992,7 +2035,7 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
                                 'post_type' => $post_type,
                                 'fields'    => 'all',
                                 'order'     => 'DESC',)
-                            );
+                        );
                     } else {
                         $searched       = '';
                         $search_results = array();
@@ -2035,16 +2078,16 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
                          *
                          * The dynamic portion of the hook name, `$post_type_name`, refers
                          * to the slug of the current post type.
-                         *
-                         * @since 3.2.0
-                         * @since 4.6.0 Converted the `$post_type` parameter to accept a WP_Post_Type object.
-                         *
-                         * @see WP_Query::query()
-                         *
+                         * 
                          * @param object[]     $posts     The posts for the current post type. Mostly `WP_Post` objects, but
                          *                                can also contain "fake" post objects to represent other menu items.
                          * @param array        $args      An array of `WP_Query` arguments.
                          * @param WP_Post_Type $post_type The current post type object for this menu item meta box.
+                         * 
+                         * @since 3.2.0
+                         * @since 4.6.0 Converted the `$post_type` parameter to accept a WP_Post_Type object.
+                         *
+                         * @see WP_Query::query()
                          */
                         $posts = apply_filters("nav_menu_items_{$post_type_name}", $posts, $args, $post_type);
 
@@ -2078,6 +2121,8 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
 
         /**
          * Set option for do not show again settings warning on create legal page submenu.
+         * 
+         * @return nothing
          */
         public function wplegalpages_disable_settings_warning() 
         {
@@ -2090,6 +2135,8 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
 
         /**
          * Ajax callback for setting page
+         * 
+         * @return nothing
          */
         public function wplegalpages_ajax_save_settings() 
         {
@@ -2176,7 +2223,7 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
          * Save WPLegalPages Pro Admin settings.
          *
          * @param Array $lp_general General settings.
-         * @param Array $data Data.
+         * @param Array $data       Data.
          *
          * @return mixed
          *
@@ -2213,6 +2260,8 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
         }
         /**
          * Ajax callback for saving age form
+         * 
+         * @return nothing
          */
         public function wplegalpages_pro_save_age_form() 
         {
@@ -2255,6 +2304,8 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
 
         /**
          * Ajax callback for saving popup form
+         * 
+         * @return nothing
          */
         public function wplegalpages_pro_save_popup_form() 
         {
@@ -2275,7 +2326,9 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
         /**
          * Function to return pro options required for compliances tab
          *
-         * @param  object $options_object data.
+         * @param object $options_object data.
+         * 
+         * @return nothing
          */
         public function wplegalpages_pro_compliances_options($options_object) 
         {
@@ -2318,6 +2371,8 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
         }
         /**
          * Function for Shortcodes tab
+         * 
+         * @return nothing
          */
         public function wplegalpages_pro_shortcodes_table() 
         {
@@ -2425,6 +2480,8 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
         }
         /**
          * Ajax callback for legalpages add link to footer form
+         * 
+         * @return nothing
          */
         public function wplegalpages_save_footer_form() 
         {
@@ -2466,6 +2523,8 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
          * Function to set cookie when a post is updated
          *
          * @param int $post_id id of post updated.
+         * 
+         * @return nothing
          */
         public function wplegalpages_post_updated($post_id) 
         {
@@ -2482,8 +2541,7 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
                     $banner_cookie_options[ $post_id ] = array(
                         'cookie_start' => time(),
                         'cookie_end'   => time() + (86400 * $cookie_days),
-                        'cookie_name'  => 'wplegalpages-update-notice-' . $post_id,
-);
+                        'cookie_name'  => 'wplegalpages-update-notice-' . $post_id,);
                     update_option('banner_cookie_options', $banner_cookie_options);
                 }
             }
@@ -2491,6 +2549,8 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
 
         /**
          * Ajax callback for banner form
+         * 
+         * @return nothing
          */
         public function wplegalpages_save_banner_form() 
         {
@@ -2528,6 +2588,8 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
 
         /**
          * Ajax callback for Cookie Bar form
+         * 
+         * @return nothing
          */
         public function wplegalpages_save_cookie_bar_form() 
         {
@@ -2587,6 +2649,8 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
          * Dequeue forms.css
          *
          * @param string $href .
+         * 
+         * @return $href
          */
         public function wplegalpages_dequeue_styles($href) 
         {
@@ -2610,6 +2674,8 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
          * Dequeue forms.css && revisions.css for newer version of WordPress.
          *
          * @param array $to_dos .
+         * 
+         * @return $to_dos;
          */
         public function wplegalpages_remove_forms_style($to_dos) 
         {
@@ -2629,10 +2695,12 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
 
         /**
          * Callback for wp_trash_post hook
-         *
+         * 
+         * @param int $post_id ID of the post trashed.
+         * 
          * @since 2.8.1
          *
-         * @param int $post_id ID of the post trashed.
+         * @return nothing
          */
         public function wplegalpages_trash_page($post_id) 
         {
@@ -2660,6 +2728,8 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
 
         /**
          * Setup wizard.
+         * 
+         * @return nothing
          */
         public function setup_legal_wizard() 
         {
@@ -2683,6 +2753,8 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
 
         /**
          * Load wizard.
+         * 
+         * @return nothing
          */
         public function load_wplegal_wizard() 
         {
@@ -2697,6 +2769,8 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
 
         /**
          * Enqueue wizard scripts.
+         * 
+         * @return nothing
          */
         public function wplegal_wizard_enqueue_scripts() 
         {
@@ -2769,6 +2843,8 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
 
         /**
          * Wizard header.
+         * 
+         * @return nothing
          */
         public function wplegal_wizard_header() 
         {
@@ -2789,6 +2865,8 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
 
         /**
          * Wizard footer.
+         * 
+         * @return nothing
          */
         public function wplegal_wizard_footer() 
         {
@@ -2807,6 +2885,8 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
         }
         /**
          * Wizard content.
+         * 
+         * @return nothing
          */
         public function wplegal_wizard_content() 
         {
@@ -2818,8 +2898,9 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
         /**
          * Save page section clauses.
          *
-         * @param  array $field Field.
-         * @param  array $data Data options.
+         * @param array $field Field.
+         * @param array $data  Data options.
+         * 
          * @return array
          */
         public function wplegalpages_page_sections_clauses_save($field, $data = array()) 
@@ -2879,8 +2960,9 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
         /**
          * Save page section settings.
          *
-         * @param  array $field Field.
-         * @param  array $post_data Post Data.
+         * @param array $field     Field.
+         * @param array $post_data Post Data.
+         * 
          * @return mixed
          */
         public function wplegalpages_page_sections_settings_save($field, $post_data = '') 
@@ -2949,8 +3031,9 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
         /**
          * Create policy page and return post id.
          *
-         * @param  string $title Page title.
-         * @param  string $content Page content.
+         * @param string $title   Page title.
+         * @param string $content Page content.
+         * 
          * @return int|void|WP_Error
          */
         public function wplegalpages_get_pid_by_insert_page($title = '', $content = '') 
@@ -2971,6 +3054,8 @@ if (! class_exists('WP_Legal_Pages_Admin')) {
 
         /**
          * Save page sections.
+         * 
+         * @return nothing
          */
         public function wplegalpages_page_sections_save() 
         {

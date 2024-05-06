@@ -3,9 +3,13 @@
  * Provide a admin area view for the create legal pages.
  *
  * This file is used to markup the admin-facing aspects of the plugin.
- *
+ * 
+ * @category   X
  * @package    Wplegalpages
  * @subpackage Wplegalpages/admin
+ * @author     Display Name <username@example.com>
+ * @license    username@example.com X
+ * @link       https://wplegalpages.com/
  */
 
 if (! defined('ABSPATH')) {
@@ -250,13 +254,15 @@ if ($countof_pages[0]->cntPages < $max_limit) {
                                     </span>
                                 </a></span></li>
                     <?php else : ?> 
-                        <li class="wplegal-template-fr" style="display:none;"><span><a class="myLink" href="<?php echo esc_url(admin_url()); ?>index.php?page=wplegal-wizard#/">Use Guided Wizard
-                                    <span class="wplegal-tooltip"><span class="dashicons dashicons-info"></span>
-                                        <span class="wplegal-tooltiptext">Easy Q&A wizard to help you customize your policy as per your business</span>
-                                    </span>
-                                </a>
+                        <li class="wplegal-template-fr" style="display:none;">
+                        <span>
+                            <a class="myLink" href="<?php echo esc_url(admin_url()); ?>index.php?page=wplegal-wizard#/"> Use Guided Wizard <span class="wplegal-tooltip">
+                                <span class="dashicons dashicons-info"></span><span class="wplegal-tooltiptext">Easy Q&A wizard to help you customize your policy as per your business
+                                </span>
                             </span>
-                        </li>			
+                        </a>
+                    </span>
+                </li>			
                             <?php
                     endif;
                     $refund_start = true;

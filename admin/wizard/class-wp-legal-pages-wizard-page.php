@@ -3,11 +3,14 @@
  * WP Legal Page.
  *
  * This class defines the page on wizard.
- *
- * @since      1.5.2
+ * 
+ * @category   X
  * @package    WP_Legal_Pages
  * @subpackage WP_Legal_Pages/admin/wizard
  * @author     WPEka <support@wplegalpages.com>
+ * @license    username@example.com X
+ * @link       https://wplegalpages.com/
+ * @since      1.5.2
  */
 
 if (! class_exists('WP_Legal_Pages_Wizard_Page')) {
@@ -17,9 +20,12 @@ if (! class_exists('WP_Legal_Pages_Wizard_Page')) {
      *
      * This class defines the page on wizard.
      * 
+     * @category   X
      * @package    WP_Legal_Pages
      * @subpackage WP_Legal_Pages/admin/wizard
-     * @author     WPEka <support@wplegalpages.com>  
+     * @author     WPEka <support@wplegalpages.com>
+     * @license    username@example.com X
+     * @link       https://wplegalpages.com/
      * @since      1.5.2
      */
 
@@ -49,8 +55,9 @@ if (! class_exists('WP_Legal_Pages_Wizard_Page')) {
          * Set Legal Pages Settings Array.
          * 
          * @param array $settings Settings array.
+         * 
+         * @return array
          */
-
         public function set_settings($settings) 
         {
             $this->settings = $settings;
@@ -81,7 +88,8 @@ if (! class_exists('WP_Legal_Pages_Wizard_Page')) {
         /**
          * Return post id for policy page.
          *
-         * @param  string $page Page.
+         * @param string $page Page.
+         * 
          * @return mixed|void
          */
         public function get_pid_by_page($page) 
@@ -203,7 +211,8 @@ if (! class_exists('WP_Legal_Pages_Wizard_Page')) {
         /**
          * Return remote data for the policy page.
          *
-         * @param  string $data Data to be fetched.
+         * @param string $data Data to be fetched.
+         * 
          * @return array|mixed
          */
         public function get_remote_data($data = '') 
@@ -220,8 +229,9 @@ if (! class_exists('WP_Legal_Pages_Wizard_Page')) {
         /**
          * Get preview by wizard page.
          *
-         * @param  string $page Wizard page.
-         * @param  string $language Language.
+         * @param string $page     Wizard page.
+         * @param string $language Language.
+         * 
          * @return string
          */
         public function get_preview_by_page($page, $language) 
@@ -509,7 +519,8 @@ if (! class_exists('WP_Legal_Pages_Wizard_Page')) {
         /**
          * Get wizard page settings.
          *
-         * @param  string $page Wizard page.
+         * @param string $page Wizard page.
+         * 
          * @return array
          */
         public function get_setting_fields_by_page($page) 
@@ -1083,8 +1094,9 @@ if (! class_exists('WP_Legal_Pages_Wizard_Page')) {
         /**
          * Create policy page and return post id.
          *
-         * @param  string $page Page.
-         * @param  string $title Page title.
+         * @param string $page  Page.
+         * @param string $title Page title.
+         * 
          * @return int|void|WP_Error
          */
         public function get_pid_by_insert_page($page, $title = '') 
@@ -1108,7 +1120,8 @@ if (! class_exists('WP_Legal_Pages_Wizard_Page')) {
         /**
          * Get wizard page sections.
          *
-         * @param  string $page Wizard page.
+         * @param string $page Wizard page.
+         * 
          * @return array|mixed
          */
         public function get_section_fields_by_page($page) 
@@ -1404,7 +1417,8 @@ if (! class_exists('WP_Legal_Pages_Wizard_Page')) {
         /**
          * Get wizard page preview.
          *
-         * @param  string $page Wizard page.
+         * @param string $page Wizard page.
+         * 
          * @return string
          */
         public function get_page_preview_text($page) 
@@ -2168,10 +2182,11 @@ if (! class_exists('WP_Legal_Pages_Wizard_Page')) {
         /**
          * Get remote preview for policy page content.
          *
-         * @param  string $page       Page.
-         * @param  array  $options    Options array.
-         * @param  array  $lp_general General options.
-         * @param  string $lang       Language.
+         * @param string $page       Page.
+         * @param array  $options    Options array.
+         * @param array  $lp_general General options.
+         * @param string $lang       Language.
+         * 
          * @return mixed|string
          */
         private function get_preview_from_remote($page, $options, $lp_general, $lang = 'en_US') 
